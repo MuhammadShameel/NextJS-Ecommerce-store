@@ -42,43 +42,43 @@ const Nav = () => {
         <div className="flex justify-between w-full  mx-auto">
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Jewelry & Accessories
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Clothing & Shoes
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Home & Living
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Wedding & Party
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Toys & Entertainment
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Art & Collectibles
           </a>
           <a
             href="#shopping"
-            className="text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out"
+            className=" hover:text-gray-500 transition-colors duration-300 ease-in-out"
           >
             Craft Supplies & Tools
           </a>
