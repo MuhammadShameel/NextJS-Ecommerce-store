@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Product from "./components/Product";
+import Footer from "./components/Footer";
 import "../app/globals.css";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <Nav />
       <Product />
+      <Footer />
     </div>
   );
 }
