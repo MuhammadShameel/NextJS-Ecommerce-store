@@ -59,8 +59,8 @@ const Product = () => {
               Filter
             </button>
           </nav>
-          <div className="cards flex">
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -82,7 +82,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image className="object-cover" src={bag} alt="product image" />
               </a>
@@ -98,7 +98,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -120,7 +120,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -142,9 +142,9 @@ const Product = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="cards flex">
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+
+            {/* <div className="cards flex"> */}
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -164,7 +164,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -186,7 +186,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -206,7 +206,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="relative m-5 flex w-full max-w-[312px] flex-col overflow-hidden bg-white hover:shadow-md ">
+            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <a className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
@@ -229,6 +229,7 @@ const Product = () => {
               </div>
             </div>
           </div>
+          {/* </div> */}
         </div>
       </div>
     </div>
