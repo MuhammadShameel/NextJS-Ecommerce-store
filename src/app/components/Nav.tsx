@@ -41,28 +41,25 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
         </div>
         <div className="p-4">
           <a href="#" className="block py-2">
-            Option 1
+            Jewelry & Accessories
           </a>
           <a href="#" className="block py-2">
-            Option 2
+            Clothing & Shoes
           </a>
           <a href="#" className="block py-2">
-            Option 3
+            Home & Living
           </a>
           <a href="#" className="block py-2">
-            Option 4
+            Wedding & Party
           </a>
           <a href="#" className="block py-2">
-            Option 5
+            Toys & Entertainment
           </a>
           <a href="#" className="block py-2">
-            Option 6
+            Art & Collectibles
           </a>
           <a href="#" className="block py-2">
-            Option 7
-          </a>
-          <a href="#" className="block py-2">
-            Option 8
+            Craft Supplies & Tools
           </a>
         </div>
       </div>
