@@ -10,7 +10,7 @@ const Nav = () => {
     <div className="container mx-auto">
       <nav className="flex items-center justify-between flex-wrap bg-white p-6 ">
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <button className="flex items-center py-2   text-primary  hover:text-gray-500 transition-colors duration-300 ease-in-out">
+          <button className="flex items-center py-2 w-[181.55px]  text-primary  hover:text-gray-500 transition-colors duration-300 ease-in-out">
             <FiSearch className="text-xl" />
           </button>
           <div className="flex items-center flex-shrink-0 text-white mx-auto">
