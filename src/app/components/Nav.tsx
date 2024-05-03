@@ -20,7 +20,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
       }`}
       onClick={onClose}
     >
-      <div className="fixed inset-y-0 left-0 max-w-xs w-full bg-white z-50 shadow transform transition-transform ease-in-out duration-300">
+      <div className="fixed font-roboto inset-y-0 left-0 max-w-xs w-full bg-white z-50 shadow transform transition-transform ease-in-out duration-300">
         <div className="flex justify-end p-4">
           <button onClick={onClose}>
             <svg
@@ -69,7 +69,7 @@ const Nav = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto font-roboto">
       <nav className="flex items-center justify-between flex-wrap bg-white p-6 ">
         <div className="w-full flex-grow flex lg:items-center lg:w-auto">
           <button className="hidden lg:flex items-center py-2 lg:w-[181.55px] text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out">

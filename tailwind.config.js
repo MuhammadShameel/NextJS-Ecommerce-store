@@ -10,10 +10,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: "rgba(30, 40, 50, 1)",
+      fontFamily: {
+        "open-sans": [
+          "Open Sans",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+        ],
+        roboto: ["Roboto", "ui-sans-serif", "system-ui", "-apple-system"],
+        colors: {
+          primary: "rgba(30, 40, 50, 1)",
+        },
       },
     },
+    plugins: [],
   },
-  plugins: [],
 };

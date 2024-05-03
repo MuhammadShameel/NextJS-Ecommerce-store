@@ -20,7 +20,7 @@ const Products = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto font-open-sans">
       <div className="product-section p-6">
         <h2 className="text-center">Or subscribe to the newsletter</h2>
         <div>
@@ -127,7 +127,7 @@ const Products = () => {
                 </li>
               </ul>
             </div>
-            <button className="bg-primary text-white py-2 px-4 rounded flex hover:bg-gray-800">
+            <button className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800">
               <MdFilterAlt className="text-xl mr-1" />
               Filter
             </button>
