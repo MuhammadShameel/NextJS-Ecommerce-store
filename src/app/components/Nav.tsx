@@ -58,9 +58,6 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
           <a href="#" className="block py-2">
             Art & Collectibles
           </a>
-          <a href="#" className="block py-2">
-            Craft Supplies & Tools
-          </a>
         </div>
       </div>
     </div>
@@ -198,12 +195,12 @@ const Nav = () => {
           >
             Art & Collectibles
           </a>
-          <a
+          {/* <a
             href="#shopping"
             className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
           >
             Craft Supplies & Tools
-          </a>
+          </a> */}
           <button
             className="lg:hidden"
             onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
