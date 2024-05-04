@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
+import { useQuery, gql } from "@apollo/client";
 
 import jeansProduct from "../../../public/images/joggers.png";
 import glasses from "../../../public/images/glasses.png";
@@ -13,12 +14,29 @@ import Image from "next/image";
 
 import { MdFilterAlt } from "react-icons/md";
 
+const GET_TAGS = gql`
+  query {
+    tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
+      nodes {
+        name
+        displayTitle
+        slug
+      }
+    }
+  }
+`;
+
 const Products = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { loading, error, data } = useQuery(GET_TAGS);
+
+  if (loading) return <p>Loading menu items...</p>;
+  if (error) return <p>Error loading menu items: {error.message}</p>;
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  console.log("data", data);
   return (
     <div className="container mx-auto font-open-sans">
       <div className="product-section p-6">
@@ -93,6 +111,18 @@ const Products = () => {
               </div>
               {/* Large Screen Menu */}
               <ul className="hidden lg:flex">
+                {data.tags.nodes.map((menuItem: any) => (
+                  <li key={menuItem.id} className="mr-5">
+                    <a
+                      href={`#${menuItem.slug}`}
+                      className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
+                    >
+                      {menuItem.displayTitle}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {/* <ul className="hidden lg:flex">
                 <li className="mr-5">
                   <a
                     href="#tshirt"
@@ -125,7 +155,7 @@ const Products = () => {
                     Jacket
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
             <button className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800">
               <MdFilterAlt className="text-xl mr-1" />
