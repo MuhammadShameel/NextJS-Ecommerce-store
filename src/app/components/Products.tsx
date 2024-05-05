@@ -1,7 +1,8 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import jeansProduct from "../../../public/images/joggers.png";
 import glasses from "../../../public/images/glasses.png";
@@ -29,6 +30,7 @@ const GET_TAGS = gql`
 
 const Products = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const router = useRouter();
   const { loading, error, data } = useQuery(GET_TAGS);
 
   if (loading) return <p>Loading menu items...</p>;
@@ -109,7 +111,9 @@ const Products = () => {
                 {data.tags.nodes.map((menuItem: any) => (
                   <li key={menuItem.id} className="mr-5">
                     <Link
-                      href={`#${menuItem.slug}`}
+                      href={{
+                        query: { tag: menuItem.displayTitle.toLowerCase() },
+                      }}
                       className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
                     >
                       {menuItem.displayTitle}
