@@ -1,6 +1,7 @@
 "use client";
 import React, { ReactNode, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
+import Link from "next/link";
 
 import jeansProduct from "../../../public/images/joggers.png";
 import glasses from "../../../public/images/glasses.png";
@@ -36,7 +37,7 @@ const Products = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  console.log("data", data);
+  console.log("I am data", data);
   return (
     <div className="container mx-auto font-open-sans">
       <div className="product-section p-6">
@@ -75,87 +76,47 @@ const Products = () => {
                 {isDropdownOpen && (
                   <ul className="absolute z-10 top-full rounded-lg mt-4 left-0 w-[140px] bg-white text-gray-500 shadow-lg py-1">
                     <li>
-                      <a
+                      <Link
                         href="#tshirt"
-                        className="block px-4 py-2 text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
+                        className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out ms-2 mt-2"
                       >
                         All Products
-                      </a>
+                      </Link>
                     </li>
-                    <li>
-                      <a
-                        href="#bag"
-                        className="block px-4 py-2 text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                      >
-                        T-Shirt
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#item1"
-                        className="block px-4 py-2 text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                      >
-                        Hoodies
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#item2"
-                        className="block px-4 py-2 text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                      >
-                        Jacket
-                      </a>
-                    </li>
+                    {data.tags.nodes.map((menuItem: any) => (
+                      <li key={menuItem.id} className="mr-5">
+                        <Link
+                          href={`#${menuItem.slug}`}
+                          className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out ms-2"
+                        >
+                          {menuItem.displayTitle}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
               {/* Large Screen Menu */}
               <ul className="hidden lg:flex">
-                {data.tags.nodes.map((menuItem: any) => (
-                  <li key={menuItem.id} className="mr-5">
-                    <a
-                      href={`#${menuItem.slug}`}
-                      className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                    >
-                      {menuItem.displayTitle}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              {/* <ul className="hidden lg:flex">
                 <li className="mr-5">
-                  <a
+                  <Link
                     href="#tshirt"
                     className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
                   >
                     All Products
-                  </a>
+                  </Link>
                 </li>
-                <li className="mr-5">
-                  <a
-                    href="#bag"
-                    className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                  >
-                    T-Shirt
-                  </a>
-                </li>
-                <li className="mr-5">
-                  <a
-                    href="#item1"
-                    className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                  >
-                    Hoodies
-                  </a>
-                </li>
-                <li className="mr-5">
-                  <a
-                    href="#item2"
-                    className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                  >
-                    Jacket
-                  </a>
-                </li>
-              </ul> */}
+                {data.tags.nodes.map((menuItem: any) => (
+                  <li key={menuItem.id} className="mr-5">
+                    <Link
+                      href={`#${menuItem.slug}`}
+                      className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
+                    >
+                      {menuItem.displayTitle}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
             <button className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800">
               <MdFilterAlt className="text-xl mr-1" />
@@ -163,20 +124,20 @@ const Products = () => {
             </button>
           </nav>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={jeansProduct}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Adicolor Classics Joggers
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Dress
@@ -185,36 +146,36 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image className="object-cover" src={bag} alt="product image" />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Nike Sportswear Futura Luxe
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">Bag</h5>
                   <h5 className="text-sm tracking-tight ">$130.00</h5>
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={scarf}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Geometric print Scarf
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Scarf
@@ -223,20 +184,20 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={hoodie}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Yellow Reserved Hoodie
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Dress
@@ -245,20 +206,18 @@ const Products = () => {
                 </div>
               </div>
             </div>
-
-            {/* <div className="cards flex"> */}
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={greenDress}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">Basic Dress Green</h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Dress
@@ -267,20 +226,20 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={sneakers}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Nike Air Zoom Pegasus
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Shoes
@@ -289,18 +248,18 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={jacket}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">Nike Repel Miler</h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Dress
@@ -309,20 +268,20 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
-              <a className="relative flex overflow-hidden " href="#">
+            <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
+              <Link className="relative flex overflow-hidden " href="#">
                 <Image
                   className="object-cover"
                   src={glasses}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="mt-4 px-3 pb-5">
-                <a href="#">
+                <Link href="#">
                   <h5 className="text-sm tracking-tight ">
                     Nike Sportswear Futura Luxe
                   </h5>
-                </a>
+                </Link>
                 <div className="mt-2  flex items-center justify-between">
                   <h5 className="text-sm tracking-tight text-gray-400">
                     Glasses
@@ -332,7 +291,6 @@ const Products = () => {
               </div>
             </div>
           </div>
-          {/* </div> */}
         </div>
       </div>
     </div>
