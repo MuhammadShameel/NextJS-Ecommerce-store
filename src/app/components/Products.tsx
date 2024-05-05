@@ -127,7 +127,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={jeansProduct}
                   alt="product image"
                 />
@@ -148,7 +148,11 @@ const Products = () => {
             </div>
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
-                <Image className="object-cover" src={bag} alt="product image" />
+                <Image
+                  className="object-cover sm:mx-auto"
+                  src={bag}
+                  alt="product image"
+                />
               </Link>
               <div className="mt-4 px-3 pb-5">
                 <Link href="#">
@@ -165,7 +169,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={scarf}
                   alt="product image"
                 />
@@ -187,7 +191,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={hoodie}
                   alt="product image"
                 />
@@ -209,7 +213,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={greenDress}
                   alt="product image"
                 />
@@ -229,7 +233,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={sneakers}
                   alt="product image"
                 />
@@ -251,7 +255,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={jacket}
                   alt="product image"
                 />
@@ -271,7 +275,7 @@ const Products = () => {
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
-                  className="object-cover"
+                  className="object-cover sm:mx-auto"
                   src={glasses}
                   alt="product image"
                 />
