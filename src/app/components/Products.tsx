@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import jeansProduct from "../../../public/images/joggers.png";
 import glasses from "../../../public/images/glasses.png";
@@ -30,8 +30,9 @@ const GET_TAGS = gql`
 
 const Products = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const router = useRouter();
   const { loading, error, data } = useQuery(GET_TAGS);
+  const queryParameters = useSearchParams();
+  const search = queryParameters.get("tag");
 
   if (loading) return <p>Loading menu items...</p>;
   if (error) return <p>Error loading menu items: {error.message}</p>;
@@ -108,18 +109,23 @@ const Products = () => {
                     All Products
                   </Link>
                 </li>
-                {data.tags.nodes.map((menuItem: any) => (
-                  <li key={menuItem.id} className="mr-5">
-                    <Link
-                      href={{
-                        query: { tag: menuItem.displayTitle.toLowerCase() },
-                      }}
-                      className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
-                    >
-                      {menuItem.displayTitle}
-                    </Link>
-                  </li>
-                ))}
+                {data.tags.nodes.map((menuItems: any) => {
+                  const isActive = search === menuItems.slug;
+                  return (
+                    <li key={menuItems.id} className="mr-5">
+                      <Link
+                        href={{
+                          query: { tag: menuItems.slug },
+                        }}
+                        className={`${
+                          isActive ? "text-bold text-black" : ""
+                        } text-gray-500  transition-colors duration-300 ease-in-out`}
+                      >
+                        {menuItems.displayTitle}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <button className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800">
