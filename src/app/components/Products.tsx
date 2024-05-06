@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -33,6 +33,9 @@ const Products = () => {
   const { loading, error, data } = useQuery(GET_TAGS);
   const queryParameters = useSearchParams();
   const search = queryParameters.get("tag");
+  useEffect(() => {
+    console.log("xyz");
+  }, []);
 
   if (loading)
     return (
@@ -141,7 +144,7 @@ const Products = () => {
                           query: { tag: menuItems.slug },
                         }}
                         className={`${
-                          isActive ? "text-bold text-black" : ""
+                          isActive ? "font-bold text-black" : ""
                         } text-gray-500  transition-colors duration-300 ease-in-out`}
                       >
                         {menuItems.displayTitle}
