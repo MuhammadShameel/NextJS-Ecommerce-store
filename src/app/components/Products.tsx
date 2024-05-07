@@ -130,7 +130,9 @@ const Products = () => {
                 <li className="mr-5">
                   <Link
                     href="#tshirt"
-                    className="text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out"
+                    className={`${
+                      !search ? "font-bold text-black" : ""
+                    } text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out`}
                   >
                     All Products
                   </Link>
