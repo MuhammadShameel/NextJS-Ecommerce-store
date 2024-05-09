@@ -14,7 +14,6 @@ export default function Home() {
       <div>
         <Nav />
         <Product />
-        <ProductItem />
         <Footer />
       </div>
     </ApolloProvider>
