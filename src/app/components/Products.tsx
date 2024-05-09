@@ -95,7 +95,7 @@ const Products = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   // console.log("I am data", data);
-  console.log("catalogitems", data.catalogItems);
+  console.log("catalog items", data.catalogItems);
 
   return (
     <div className="container mx-auto font-open-sans">
