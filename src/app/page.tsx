@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import "../app/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "./lib/apollo-client";
-import ProductItem from "./components/ProductItem";
 
 export default function Home() {
   return (
