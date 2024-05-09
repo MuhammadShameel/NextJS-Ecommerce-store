@@ -195,6 +195,48 @@ const Products = () => {
             </button>
           </nav>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {data.catalogItems.edges.map((edge: any) => {
+              const { node } = edge;
+              const { product } = node;
+              return (
+                <div
+                  key={product._id}
+                  className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition"
+                >
+                  <Link className="relative flex overflow-hidden" href="#">
+                    <Image
+                      className="object-cover sm:mx-auto"
+                      src={jeansProduct}
+                      alt="product image"
+                    />
+                  </Link>
+                  <div className="mt-4 px-3 pb-5">
+                    <Link href="#">
+                      <h5 className="text-sm tracking-tight">
+                        {product.title}
+                      </h5>
+                    </Link>
+                    <div className="mt-2 flex items-center justify-between">
+                      <h5 className="text-sm tracking-tight text-gray-400">
+                        {product.description}
+                      </h5>
+                    </div>
+                    <div className="mt-2 flex justify-between">
+                      {product.variants.map((variant: any) => (
+                        <p key={variant._id} className="text-xs text-gray-500">
+                          {variant.title}
+                        </p>
+                      ))}
+                      {product.pricing.map((price: any, index: number) => (
+                        <h5 key={index} className="text-sm tracking-tight">
+                          {price.displayPrice}
+                        </h5>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
             <div className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition">
               <Link className="relative flex overflow-hidden " href="#">
                 <Image
