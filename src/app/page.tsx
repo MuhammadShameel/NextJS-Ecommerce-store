@@ -6,13 +6,7 @@ import Footer from "./components/Footer";
 import "../app/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "./lib/apollo-client";
-
-interface Location {
-  id: number;
-  name: string;
-  description: string;
-  photo: string;
-}
+import ProductItem from "./components/ProductItem";
 
 export default function Home() {
   return (
@@ -20,6 +14,7 @@ export default function Home() {
       <div>
         <Nav />
         <Product />
+        <ProductItem />
         <Footer />
       </div>
     </ApolloProvider>
