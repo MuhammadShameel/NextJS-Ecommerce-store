@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import jeansProduct from "../../../public/images/joggers.png";
+import food from "../../../public/images/food-card.jpg";
 import Image from "next/image";
 
 import { MdFilterAlt } from "react-icons/md";
@@ -12,7 +13,7 @@ import { MdFilterAlt } from "react-icons/md";
 const Products = () => {
   const [tagId, setTagId] = useState("");
 
-  const GET_TAGS = gql`
+  const GET_DATA = gql`
     query {
       tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
         nodes {
@@ -32,7 +33,7 @@ const Products = () => {
               product {
                 title
                 description
-                pricing{
+                pricing {
                   displayPrice
                 }
                 _id
@@ -53,10 +54,9 @@ const Products = () => {
     }
   `;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { loading, error, data } = useQuery(GET_TAGS, {
+  const { loading, error, data } = useQuery(GET_DATA, {
     variables: {
       shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="],
-      tagIds: ["cmVhY3Rpb24vdGFnOlF2cmozWG95U3NvS1BkM3hL"],
     },
   });
   const queryParameters = useSearchParams();
@@ -89,7 +89,10 @@ const Products = () => {
         </div>
       </div>
     );
-  if (error) return <p>Error loading menu items: {error.message}</p>;
+  if (error)
+    return (
+      <p className="container mx-auto text-red-600">Error : {error.message}</p>
+    );
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -159,10 +162,11 @@ const Products = () => {
               <ul className="hidden lg:flex">
                 <li className="mr-5">
                   <Link
-                    href="#tshirt"
+                    href="/"
                     className={`${
                       !search ? "font-bold text-black" : ""
                     } text-gray-500 hover:text-primary transition-colors duration-300 ease-in-out`}
+                    scroll={false}
                   >
                     All Products
                   </Link>
@@ -206,7 +210,7 @@ const Products = () => {
                   <Link className="relative flex overflow-hidden" href="#">
                     <Image
                       className="object-cover sm:mx-auto"
-                      src={jeansProduct}
+                      src={food}
                       alt="product image"
                     />
                   </Link>
