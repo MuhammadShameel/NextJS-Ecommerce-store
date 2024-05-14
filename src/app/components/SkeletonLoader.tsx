@@ -25,7 +25,7 @@ const SkeletonLoader = () => (
       {[...Array(4)].map((_, index) => (
         <div key={index} className="w-full md:w-1/2 lg:w-1/4">
           <div className="bg-white rounded-lg p-4">
-            <div className="bg-gray-200 h-80 w-full rounded-lg"></div>
+            <div className="bg-gray-200 h-44 w-full rounded-lg"></div>
             <div className="mt-4">
               <div className="bg-gray-200 h-4 w-3/4 mb-2"></div>
               <div className="ms-auto bg-gray-200 h-4 w-1/2"></div>
