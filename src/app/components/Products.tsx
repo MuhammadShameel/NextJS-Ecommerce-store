@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import SkeletonLoader from "./SkeletonLoader";
 import AllProducts from "./AllProducts";
 
-import food from "../../../public/images/food-card.jpg";
+import food from "../../../public/images/burger.jpg";
 import Image from "next/image";
 
 import { MdFilterAlt } from "react-icons/md";
