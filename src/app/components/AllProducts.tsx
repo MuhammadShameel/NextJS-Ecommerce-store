@@ -3,7 +3,6 @@ import { useQuery, gql } from "@apollo/client";
 import food from "../../../public/images/food-card.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import SkeletonLoader from "./SkeletonLoader";
 
 const GET_ALL_PRODUCTS = gql`
   query {
