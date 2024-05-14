@@ -4,7 +4,7 @@ import React from "react";
 import { MdFilterAlt } from "react-icons/md";
 
 const SkeletonLoader = () => (
-  <div className="relative container mx-auto">
+  <div className="relative container mx-auto p-6">
     <h2 className="text-center mb-2">Or subscribe to the newsletter</h2>
     <nav className="flex items-center justify-between bg-white py-7">
       <div className="flex">
