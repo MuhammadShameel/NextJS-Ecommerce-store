@@ -1,46 +1,53 @@
 "use client";
+
 import React, { useState } from "react";
-import { useQuery, gql } from "@apollo/client";
-import Link from "next/link";
+import { useQuery } from "@apollo/client";
+import { gql } from "../../../__generated__/gql";
 import { useSearchParams } from "next/navigation";
+
+import Link from "next/link";
+import Image from "next/image";
+
 import SkeletonLoader from "./SkeletonLoader";
 import AllProducts from "./AllProducts";
-
 import food from "../../../public/images/burger.jpg";
-import Image from "next/image";
 
 import { MdFilterAlt } from "react-icons/md";
 
-const GET_DATA = gql`
-  query ($tagIds: [ID!]) {
-    tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
-      nodes {
-        _id
-        name
-        displayTitle
-        slug
+const Products = () => {
+  const [tagId, setTagId] = useState("");
+
+  const GET_DATA = gql(/* GraphQL */ `
+    query ($tagIds: [ID!]) {
+      tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
+        nodes {
+          _id
+          name
+          displayTitle
+          slug
+        }
       }
-    }
-    catalogItems(
-      shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="]
-      tagIds: $tagIds
-    ) {
-      edges {
-        node {
-          ... on CatalogItemProduct {
-            product {
-              title
-              description
-              pricing {
-                displayPrice
-              }
-              _id
-              variants {
-                _id
+      catalogItems(
+        shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="]
+        tagIds: $tagIds
+      ) {
+        edges {
+          node {
+            ... on CatalogItemProduct {
+              product {
                 title
-                media {
-                  URLs {
-                    small
+                description
+                pricing {
+                  displayPrice
+                }
+                _id
+                variants {
+                  _id
+                  title
+                  media {
+                    URLs {
+                      small
+                    }
                   }
                 }
               }
@@ -49,10 +56,7 @@ const GET_DATA = gql`
         }
       }
     }
-  }
-`;
-const Products = () => {
-  const [tagId, setTagId] = useState("");
+  `);
 
   const { loading, error, data } = useQuery(GET_DATA, {
     variables: {
@@ -200,7 +204,7 @@ const Products = () => {
                     key={product._id}
                     className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition"
                   >
-                    <Link href="#">
+                    <Link href={`/product/${node.slug}`} onClick={node.slug}>
                       <Image
                         className="object-cover sm:mx-auto"
                         src={food}
@@ -208,7 +212,7 @@ const Products = () => {
                       />
                     </Link>
                     <div className="mt-4 px-3 pb-5">
-                      <Link href="#">
+                      <Link href={`/product/${node.slug}`}>
                         <h5 className="text-sm tracking-tight">
                           {product.title}
                         </h5>
