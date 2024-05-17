@@ -1,11 +1,10 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema:
-    "https://explore-btk-opencommerce-apis.ceultnteo3kpk.ap-southeast-1.cs.amazonlightsail.com/graphql",
-  documents: ["src/**/*.{ts,tsx}"],
+  schema: "schema.graphql",
+  documents: ["app/**/*.{ts,tsx}"],
   generates: {
-    "./src": {
+    "./__generated__/": {
       preset: "client",
       plugins: [],
       presetConfig: {
