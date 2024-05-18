@@ -26,24 +26,3 @@ h2 {
   transform: scale(1.1);
   transition: 0.3s ease-in-out;
 }
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-  }
-
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-  }
-}
-
-.pulse {
-  animation: pulse 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
