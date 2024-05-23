@@ -1,6 +1,5 @@
 "use client";
 
-import Nav from "./components/Nav";
 import Product from "./components/Products";
 import "../app/globals.css";
 import { ApolloProvider } from "@apollo/client";
