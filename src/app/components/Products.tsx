@@ -15,10 +15,8 @@ import food from "../../../public/images/burger.jpg";
 import { MdFilterAlt } from "react-icons/md";
 
 const Products = () => {
-  const [tagId, setTagId] = useState("");
-
   const GET_DATA = gql(/* GraphQL */ `
-    query ($tagIds: [ID!]) {
+    query GetProducts($tagIds: [ID!]) {
       tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
         nodes {
           _id
@@ -57,6 +55,7 @@ const Products = () => {
       }
     }
   `);
+  const [tagId, setTagId] = useState("");
 
   const { loading, error, data } = useQuery(GET_DATA, {
     variables: {
@@ -71,7 +70,6 @@ const Products = () => {
 
   const handleAllProductsClick = () => {
     setTagId("");
-    setShowAllProducts(false);
   };
 
   if (loading)
@@ -89,7 +87,7 @@ const Products = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   // console.log("I am data", data);
-  console.log("catalog items", data.catalogItems);
+  console.log("catalog items", data?.catalogItems);
 
   return (
     <div className="container mx-auto font-open-sans">
@@ -136,7 +134,7 @@ const Products = () => {
                         All Products
                       </Link>
                     </li>
-                    {data.tags.nodes.map((menuItem: any) => (
+                    {data?.tags?.nodes?.map((menuItem: any) => (
                       <li key={menuItem.id} className="mr-5">
                         <Link
                           href={`#${menuItem.slug}`}
@@ -163,7 +161,7 @@ const Products = () => {
                     All Products
                   </Link>
                 </li>
-                {data.tags.nodes.map((menuItems: any) => {
+                {data?.tags?.nodes?.map((menuItems: any) => {
                   const isActive = search === menuItems.slug;
                   return (
                     <li key={menuItems.id} className="mr-5">
@@ -176,6 +174,7 @@ const Products = () => {
                         } text-gray-500  transition-colors duration-300 ease-in-out`}
                         onClick={() => {
                           setTagId(menuItems._id);
+                          setShowAllProducts(false);
                         }}
                         scroll={false}
                       >
@@ -196,15 +195,14 @@ const Products = () => {
             {showAllProducts ? (
               <AllProducts />
             ) : (
-              data.catalogItems.edges.map((edge: { node: any }) => {
-                const { node } = edge;
-                const { product } = node;
+              data?.catalogItems?.edges?.map((edge: any) => {
+                const { product } = edge.node;
                 return (
                   <div
                     key={product._id}
                     className="product-card relative flex flex-col overflow-hidden bg-white hover:shadow-md transition"
                   >
-                    <Link href={`/product/${node.slug}`} onClick={node.slug}>
+                    <Link href={`/product/${product._id}`}>
                       <Image
                         className="object-cover sm:mx-auto"
                         src={food}
@@ -212,27 +210,15 @@ const Products = () => {
                       />
                     </Link>
                     <div className="mt-4 px-3 pb-5">
-                      <Link href={`/product/${node.slug}`}>
+                      <Link href={`/product/${product._id}`}>
                         <h5 className="text-sm tracking-tight">
                           {product.title}
                         </h5>
                       </Link>
                       <div className="mt-2 flex justify-between">
-                        {product.pricing.map(
-                          (
-                            price: {
-                              displayPrice: any;
-                            },
-                            index: React.Key | null | undefined
-                          ) => (
-                            <h5
-                              key={index}
-                              className="text-sm ms-auto tracking-tight"
-                            >
-                              {price.displayPrice}
-                            </h5>
-                          )
-                        )}
+                        <h5 className="text-sm ms-auto tracking-tight">
+                          {product.pricing.displayPrice}
+                        </h5>
                       </div>
                     </div>
                   </div>
