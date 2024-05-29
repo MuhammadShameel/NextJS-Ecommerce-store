@@ -11,8 +11,8 @@
     "watch": "graphql-codegen -w"
   },
   "dependencies": {
-    "@apollo/client": "^3.10.4",
-    "@apollo/experimental-nextjs-app-support": "^0.10.0",
+    "@apollo/client": "^3.10.0-rc.1",
+    "@apollo/experimental-nextjs-app-support": "^0.10.1",
     "@graphql-codegen/typescript": "^4.0.7",
     "@graphql-codegen/typescript-operations": "^4.2.1",
     "@graphql-codegen/typescript-react-apollo": "^4.3.0",
