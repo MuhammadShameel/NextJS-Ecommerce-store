@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import food from "../../../public/images/food-card.jpg";
+import food from "../../../public/images/burger.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
