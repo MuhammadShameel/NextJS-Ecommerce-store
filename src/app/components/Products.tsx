@@ -160,7 +160,7 @@ const Products = () => {
           key={product._id}
           className="product-card blur-bg relative flex flex-col overflow-hidden bg-white hover:shadow-md transition"
         >
-          <Link href={`/product/${product.slug}`}>
+          <Link href={`/products/${product.slug}`}>
             <Image
               className="object-cover sm:mx-auto"
               src={food}
