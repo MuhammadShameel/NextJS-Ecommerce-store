@@ -157,7 +157,7 @@ const Nav = () => {
         </div>
       </nav>
       <hr className="border-t-2 border-gray-50" />
-      <nav className="flex justify-center bg-white p-6">
+      {/* <nav className="flex justify-center bg-white p-6">
         <div className="flex justify-between w-full  mx-auto">
           <a
             href="#shopping"
@@ -195,12 +195,7 @@ const Nav = () => {
           >
             Art & Collectibles
           </a>
-          {/* <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Craft Supplies & Tools
-          </a> */}
+
           <button
             className="lg:hidden"
             onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
@@ -225,7 +220,7 @@ const Nav = () => {
           isOpen={isSideMenuOpen}
           onClose={() => setIsSideMenuOpen(false)}
         />
-      </nav>
+      </nav> */}
     </div>
   );
 };
