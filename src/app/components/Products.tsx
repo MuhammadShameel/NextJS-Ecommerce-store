@@ -8,9 +8,9 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-import SkeletonLoader from "./SkeletonLoader";
+import SkeletonLoader from "../skeletonLoading/cardLoader";
 import AllProducts from "./AllProducts";
-import food from "../../../public/images/burger.jpg";
+import placeholderimg from "../../../public/images/placeholder-img.svg";
 
 import { MdFilterAlt } from "react-icons/md";
 
@@ -36,6 +36,15 @@ const GET_DATA = gql(/* GraphQL */ `
               productId
               title
               description
+              primaryImage {
+                URLs {
+                  large
+                  medium
+                  small
+                  original
+                  thumbnail
+                }
+              }
               pricing {
                 displayPrice
               }
@@ -163,12 +172,14 @@ const Products = () => {
           <Link href={`/products/${product.slug}`}>
             <Image
               className="object-cover sm:mx-auto"
-              src={food}
+              src={product?.primaryImage?.URLs?.original || placeholderimg}
               alt="product image"
+              width={300}
+              height={300}
             />
           </Link>
           <div className="mt-4 px-3 pb-5">
-            <Link href={`/product/${product.slug}`}>
+            <Link href={`/products/${product.slug}`}>
               <h5 className="text-sm tracking-tight">{product.title}</h5>
             </Link>
             <div className="mt-2 flex justify-between">
