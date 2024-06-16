@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import CardLoader from "../skeletonLoading/cardLoader";
-import AllProducts from "./AllProducts";
 import Tags from "./Tags";
 import placeholderimg from "../../../public/images/elementor-placeholder-image.webp";
 import { GET_PRODUCTS, GET_TAGS } from "../queries";
@@ -84,7 +83,6 @@ const Products = () => {
       <div className="product-section p-6">
         <Tags />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* {showAllProducts ? <AllProducts /> : renderProductCards()} */}
           {renderProductCards()}
         </div>
       </div>
