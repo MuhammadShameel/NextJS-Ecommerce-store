@@ -1,4 +1,4 @@
-import { gql } from "../../__generated__/gql";
+import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS = gql(`
   query CatalogItemProduct($shopIds: [ID!]!, $tagIds: [ID!]) {
@@ -29,7 +29,7 @@ export const GET_PRODUCTS = gql(`
 `);
 
 export const GET_TAGS = gql(`
-  query {
+  query GetTags {
     tags(shopId: "cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==") {
       nodes {
         _id
