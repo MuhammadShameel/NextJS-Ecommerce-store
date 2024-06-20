@@ -2,71 +2,71 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
-import logoImg from "../../../public/images/coral-logo.png";
+import logoImg from "../../../public/images/official-logo.jpg";
 import { BsPersonFill } from "react-icons/bs";
 import { BiSolidShoppingBag } from "react-icons/bi";
 import { useState } from "react";
 
-interface SideMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+// interface SideMenuProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+// }
 
-const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
-  return (
-    <div
-      className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity ${
-        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-      onClick={onClose}
-    >
-      <div className="fixed font-roboto inset-y-0 left-0 max-w-xs w-full bg-white z-50 shadow transform transition-transform ease-in-out duration-300">
-        <div className="flex justify-end p-4">
-          <button onClick={onClose}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="p-4">
-          <a href="#" className="block py-2">
-            Jewelry & Accessories
-          </a>
-          <a href="#" className="block py-2">
-            Clothing & Shoes
-          </a>
-          <a href="#" className="block py-2">
-            Home & Living
-          </a>
-          <a href="#" className="block py-2">
-            Wedding & Party
-          </a>
-          <a href="#" className="block py-2">
-            Toys & Entertainment
-          </a>
-          <a href="#" className="block py-2">
-            Art & Collectibles
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
+// export const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
+//   return (
+//     <div
+//       className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity ${
+//         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+//       }`}
+//       onClick={onClose}
+//     >
+//       <div className="fixed font-roboto inset-y-0 left-0 max-w-xs w-full bg-white z-50 shadow transform transition-transform ease-in-out duration-300">
+//         <div className="flex justify-end p-4">
+//           <button onClick={onClose}>
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               className="h-6 w-6"
+//               fill="none"
+//               viewBox="0 0 24 24"
+//               stroke="currentColor"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 strokeWidth={2}
+//                 d="M6 18L18 6M6 6l12 12"
+//               />
+//             </svg>
+//           </button>
+//         </div>
+//         <div className="p-4">
+//           <a href="#" className="block py-2">
+//             Jewelry & Accessories
+//           </a>
+//           <a href="#" className="block py-2">
+//             Clothing & Shoes
+//           </a>
+//           <a href="#" className="block py-2">
+//             Home & Living
+//           </a>
+//           <a href="#" className="block py-2">
+//             Wedding & Party
+//           </a>
+//           <a href="#" className="block py-2">
+//             Toys & Entertainment
+//           </a>
+//           <a href="#" className="block py-2">
+//             Art & Collectibles
+//           </a>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 const Nav = () => {
   const [isTopMenuOpen, setIsTopMenuOpen] = useState(false);
-  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   return (
     <div className="container mx-auto font-roboto">
@@ -77,7 +77,11 @@ const Nav = () => {
           </button>
 
           <div className="flex items-center flex-shrink-0 text-white lg:mx-auto">
-            <Image src={logoImg} alt="Logo" />
+            <Image
+              className="log-img object-contain aspect-[10/2]"
+              src={logoImg}
+              alt="Logo"
+            />
           </div>
 
           {/* for medium screen  */}
@@ -157,70 +161,6 @@ const Nav = () => {
         </div>
       </nav>
       <hr className="border-t-2 border-gray-50" />
-      {/* <nav className="flex justify-center bg-white p-6">
-        <div className="flex justify-between w-full  mx-auto">
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Jewelry & Accessories
-          </a>
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Clothing & Shoes
-          </a>
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Home & Living
-          </a>
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Wedding & Party
-          </a>
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Toys & Entertainment
-          </a>
-          <a
-            href="#shopping"
-            className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out"
-          >
-            Art & Collectibles
-          </a>
-
-          <button
-            className="lg:hidden"
-            onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </div>
-        <SideMenu
-          isOpen={isSideMenuOpen}
-          onClose={() => setIsSideMenuOpen(false)}
-        />
-      </nav> */}
     </div>
   );
 };
