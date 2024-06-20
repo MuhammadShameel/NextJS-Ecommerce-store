@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS = gql(`
-  query CatalogItemProduct($shopIds: [ID!]!, $tagIds: [ID!]) {
-    catalogItems(shopIds: $shopIds, tagIds: $tagIds) {
+  query CatalogItemProduct($shopIds: [ID!]!, $tagIds: [ID!],$first: ConnectionLimitInt, $after: ConnectionCursor) {
+    catalogItems(shopIds: $shopIds, tagIds: $tagIds, first: $first, after: $after) {
       edges {
         node {
           __typename
@@ -23,6 +23,12 @@ export const GET_PRODUCTS = gql(`
             }
           }
         }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
   }

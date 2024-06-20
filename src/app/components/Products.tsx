@@ -1,53 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { useSearchParams } from "next/navigation";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import CardLoader from "../skeletonLoading/cardLoader";
-import Tags from "./Tags";
 import placeholderimg from "../../../public/images/elementor-placeholder-image.webp";
-import { GET_PRODUCTS, GET_TAGS } from "../queries";
+import CardLoader from "../skeletonLoading/cardLoader";
 
-const Products = () => {
-  const [tagId, setTagId] = useState("");
-  const [showAllProducts, setShowAllProducts] = useState(false);
-  const queryParameters = useSearchParams();
-  const search = queryParameters.get("tag");
-
-  const {
-    loading: productsLoading,
-    error,
-    data: productsData,
-  } = useQuery(GET_PRODUCTS, {
-    variables: {
-      shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="],
-      tagIds: tagId ? [tagId] : null,
-    },
-  });
-  const { data: tagsData } = useQuery(GET_TAGS);
-
-  useEffect(() => {
-    if (search && tagsData) {
-      const selectedTag = tagsData?.tags?.nodes?.find(
-        (tag: any) => tag.slug === search
-      );
-      if (selectedTag) {
-        setTagId(selectedTag._id);
-      } else {
-        setTagId("");
-      }
-    } else {
-      setTagId("");
-    }
-  }, [search, tagsData]);
-
+const Products = ({
+  productsData,
+  loadMoreProducts,
+  loadPrevProducts,
+}: any) => {
   const renderProductCards = () =>
     productsData?.catalogItems?.edges?.map((edge: any) => {
       const { product } = edge.node;
       return (
         <div
           key={product._id}
-          className="product-card blur-bg relative flex flex-col overflow-hidden bg-white hover:shadow-md transition"
+          className="product-card blur-bg relative flex flex-col overflow-hidden bg-white shadow hover:shadow-md transition"
         >
           <Link href={`/products/${product.slug}`}>
             <Image
@@ -72,18 +40,31 @@ const Products = () => {
       );
     });
 
-  if (productsLoading) return <CardLoader />;
-  if (error)
-    return (
-      <p className="container mx-auto text-red-600">Error: {error.message}</p>
-    );
+  if (!productsData) return <CardLoader />;
 
   return (
     <div className="container mx-auto font-open-sans">
       <div className="product-section p-6">
-        <Tags />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {renderProductCards()}
+        </div>
+        <div className="flex justify-between mt-4">
+          {productsData.catalogItems.pageInfo.hasPreviousPage && (
+            <button
+              onClick={loadPrevProducts}
+              className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800"
+            >
+              Previous
+            </button>
+          )}
+          {productsData.catalogItems.pageInfo.hasNextPage && (
+            <button
+              onClick={loadMoreProducts}
+              className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800"
+            >
+              Next
+            </button>
+          )}
         </div>
       </div>
     </div>
