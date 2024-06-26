@@ -1,22 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { useSearchParams } from "next/navigation";
-import { ApolloProvider } from "@apollo/client";
-import client from "./lib/client";
-import Product from "./components/Products";
 import Tags from "./components/Tags";
 import "../app/globals.css";
 import { GET_PRODUCTS, GET_TAGS } from "../app/queries";
-import TagsLoader from "./skeletonLoading/tagsLoader";
 import CardLoader from "./skeletonLoading/cardLoader";
-import Products from "./components/Products";
+import Card from "./components/Card";
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
   const [productLoading, setProductLoading] = useState(false);
-
   const [cursor, setCursor] = useState({ after: null, before: null });
   const queryParameters = useSearchParams();
   const search = queryParameters.get("tag");
@@ -25,7 +20,6 @@ export default function Home() {
     loading: productsLoading,
     error: productsError,
     data: productsData,
-    refetch: refetchProducts,
     fetchMore,
   } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -37,36 +31,7 @@ export default function Home() {
     },
   });
 
-  const {
-    loading: tagsLoading,
-    error: tagsError,
-    data: tagsData,
-  } = useQuery(GET_TAGS);
-
-  useEffect(() => {
-    if (search && tagsData) {
-      const selectedTag = tagsData?.tags?.nodes?.find(
-        (tag: any) => tag.slug === search
-      );
-      if (selectedTag) {
-        setTagId(selectedTag._id);
-      } else {
-        setTagId("");
-      }
-    } else {
-      setTagId("");
-    }
-  }, [search, tagsData]);
-
-  useEffect(() => {
-    if (tagId !== "") {
-      setProductLoading(true);
-      refetchProducts({
-        shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="],
-        tagIds: tagId ? [tagId] : null,
-      }).finally(() => setProductLoading(false));
-    }
-  }, [tagId, refetchProducts]);
+  const { error: tagsError, data: tagsData } = useQuery(GET_TAGS);
 
   const loadMoreProducts = () => {
     fetchMore({
@@ -98,18 +63,27 @@ export default function Home() {
   if (tagsError) return <p>Error: {productsError?.message}</p>;
 
   return (
-    <div>
+    <div className="bg-[#f5f3ec]">
       <Tags tagsData={tagsData} search={search} setTagId={setTagId} />
-      {/* <Product productsData={productsData} /> */}
-      {productLoading ? (
-        <CardLoader />
-      ) : (
-        <Products
-          productsData={productsData}
-          loadMoreProducts={loadMoreProducts}
-          loadPrevProducts={loadPrevProducts}
-        />
-      )}
+      {productLoading ? <CardLoader /> : <Card productsData={productsData} />}
+      <div className="flex justify-between mt-4 container mx-auto">
+        {productsData.catalogItems.pageInfo.hasPreviousPage && (
+          <button
+            onClick={loadPrevProducts}
+            className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800"
+          >
+            Previous
+          </button>
+        )}
+        {productsData.catalogItems.pageInfo.hasNextPage && (
+          <button
+            onClick={loadMoreProducts}
+            className="bg-primary text-white py-2 px-4 rounded flex bg-gray-800"
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 }

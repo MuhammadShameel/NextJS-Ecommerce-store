@@ -73,7 +73,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 blur-bg my-10">
+    <div className="container mx-auto p-4 blur-bg my-10 bg-[#f5f3ec]">
       <div className="flex flex-col lg:flex-row +bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg p-6">
         <div className="lg:w-1/2">
           <div className="my-10 md:flex md:justify-center sm:flex sm:justify-center">
