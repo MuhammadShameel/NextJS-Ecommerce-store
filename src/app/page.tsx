@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { useSearchParams } from "next/navigation";
 import Tags from "./components/Tags";
@@ -20,6 +20,7 @@ export default function Home() {
     loading: productsLoading,
     error: productsError,
     data: productsData,
+    refetch: refetchProducts,
     fetchMore,
   } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -30,8 +31,34 @@ export default function Home() {
       before: cursor.before,
     },
   });
-
   const { error: tagsError, data: tagsData } = useQuery(GET_TAGS);
+
+  useEffect(() => {
+    if (search && tagsData) {
+      const selectedTag = tagsData?.tags?.nodes?.find(
+        (tag: any) => tag.slug === search
+      );
+      if (selectedTag) {
+        setTagId(selectedTag._id);
+      } else {
+        setTagId("");
+      }
+    } else {
+      setTagId("");
+    }
+  }, [search, tagsData]);
+
+  useEffect(() => {
+    if (tagId !== "") {
+      setProductLoading(true);
+      refetchProducts({
+        shopIds: ["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="],
+        tagIds: tagId ? [tagId] : null,
+      }).finally(() => setProductLoading(false));
+    }
+  }, [tagId, refetchProducts]);
+
+  // const { error: tagsError, data: tagsData } = useQuery(GET_TAGS);
 
   const loadMoreProducts = () => {
     fetchMore({
@@ -65,7 +92,26 @@ export default function Home() {
   return (
     <div className="bg-[#f5f3ec]">
       <Tags tagsData={tagsData} search={search} setTagId={setTagId} />
-      {productLoading ? <CardLoader /> : <Card productsData={productsData} />}
+      <div className="container mx-auto">
+        <div className="cards flex flex-wrap">
+          {productLoading ? (
+            <CardLoader />
+          ) : (
+            productsData?.catalogItems?.edges?.map((edge: any) => {
+              if (
+                !edge?.node ||
+                edge.node.__typename !== "CatalogItemProduct" ||
+                !edge.node.product
+              ) {
+                return null;
+              }
+              return (
+                <Card key={edge.node.product._id} product={edge.node.product} />
+              );
+            })
+          )}
+        </div>
+      </div>
       <div className="flex justify-between mt-4 container mx-auto">
         {productsData.catalogItems.pageInfo.hasPreviousPage && (
           <button
