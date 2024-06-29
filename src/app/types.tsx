@@ -1,5 +1,6 @@
 // Interfaces for Products
 export interface Product {
+  variants: Variant[];
   _id: string;
   title: string;
   slug: string;
@@ -66,21 +67,6 @@ export interface Variant {
   pricing: Pricing[];
 }
 
-export interface Product {
-  _id: string;
-  title: string;
-  description: string;
-  pricing: Pricing[];
-  primaryImage: {
-    URLs: {
-      medium: string;
-      small: string;
-      original: string;
-    };
-  };
-  variants: Variant[];
-}
-
 export interface ProductListProps {
   products: (CatalogItemEdge | null)[];
 }
@@ -97,4 +83,10 @@ export type CardProps = {
   product: Product;
   imageWidth?: number;
   imageHeight?: number;
+};
+
+export type TagsProps = {
+  tagsData: { tags: { nodes: Tag[] } };
+  search: string | null;
+  setTagId: (id: string) => void;
 };
