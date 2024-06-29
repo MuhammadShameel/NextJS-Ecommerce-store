@@ -1,15 +1,31 @@
 "use client";
 import React from "react";
+import Link from "next/link";
+import { MenuItemProps } from "../types";
 
-interface Props {
-  variant: "primary" | "secondary";
-}
+const MenuItem = ({
+  text,
+  slug,
+  isActive,
+  variant,
+  onClick,
+}: MenuItemProps) => {
+  const handleClick = () => {
+    onClick(slug);
+  };
 
-const MenuItem = (props: Props) => {
   return (
-    <li className="hover:text-primary transition-colors lg:block hidden duration-300 ease-in-out">
-      Jewelry & Accessories
+    <li className={`mr-5`}>
+      <Link
+        href={`/?tag=${slug}`}
+        scroll={false}
+        onClick={handleClick}
+        className={`${isActive ? "font-bold text-black" : ""} ${variant}`}
+      >
+        {text}
+      </Link>
     </li>
   );
 };
+
 export default MenuItem;
