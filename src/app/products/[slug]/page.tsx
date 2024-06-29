@@ -7,33 +7,7 @@ import Image from "next/image";
 import placeholderimg from "../../../../public/images/elementor-placeholder-image.webp";
 import { useState } from "react";
 import { GET_PRODUCT_DETAILS } from "@/app/queries";
-
-interface Variant {
-  _id: string;
-  title: string;
-  attributeLabel?: string;
-  optionTitle: string;
-  pricing: {
-    displayPrice: string;
-    currency: {
-      code: string;
-    };
-  }[];
-}
-
-interface Product {
-  _id: string;
-  title: string;
-  description: string;
-  primaryImage: {
-    URLs: {
-      original: string;
-      small: string;
-      medium: string;
-    };
-  };
-  variants: Variant[];
-}
+import { Product, Variant } from "@/app/types";
 
 const ProductDetail = () => {
   const params = useParams<{ slug: string }>();
@@ -106,7 +80,7 @@ const ProductDetail = () => {
           <div className="mt-4">
             <h2 className="text-lg font-medium">Select :</h2>
             <div className="flex space-x-2 mt-2">
-              {product.variants.map((variant) => (
+              {product.variants.map((variant: Variant) => (
                 <button
                   key={variant._id}
                   className={`border p-2 rounded ${
