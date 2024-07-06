@@ -2,25 +2,16 @@
 import React from "react";
 import Link from "next/link";
 import { MenuItemProps } from "../types";
+import "@/app/style/global.scss";
+// import "./globals.scss";
 
-const MenuItem = ({
-  text,
-  slug,
-  isActive,
-  variant,
-  onClick,
-}: MenuItemProps) => {
-  const handleClick = () => {
-    onClick(slug);
-  };
-
+const MenuItem = ({ text, slug, isActive, variant }: MenuItemProps) => {
   return (
     <li className={`mr-5`}>
       <Link
         href={`/?tag=${slug}`}
         scroll={false}
-        onClick={handleClick}
-        className={`${isActive ? "font-bold text-black" : ""} ${variant}`}
+        className={`${isActive ? " font-bold text-black" : ""} ${variant}`}
       >
         {text}
       </Link>
