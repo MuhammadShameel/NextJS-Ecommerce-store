@@ -1,15 +1,16 @@
 "use client";
+
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
-import logoImg from "../../../public/images/official-logo.jpg";
 import { BsPersonFill } from "react-icons/bs";
 import { BiSolidShoppingBag } from "react-icons/bi";
 import { useState } from "react";
 
+import logoImg from "../../../public/images/official-logo.jpg";
+
 const Nav = () => {
   const [isTopMenuOpen, setIsTopMenuOpen] = useState(false);
-  // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   return (
     <div className="bg-[#f5f3ec]">

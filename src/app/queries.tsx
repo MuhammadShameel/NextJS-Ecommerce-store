@@ -9,7 +9,7 @@ export const GET_PRODUCTS = gql(`
           ... on CatalogItemProduct {
             product {
               _id
-              title
+              title 
               slug
               description
               primaryImage {

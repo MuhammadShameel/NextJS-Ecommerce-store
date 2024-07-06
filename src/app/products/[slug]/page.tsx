@@ -2,10 +2,11 @@
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "next/navigation";
-import DetailCardLoader from "../../skeletonLoading/detailCardLoader";
 import Image from "next/image";
-import placeholderimg from "../../../../public/images/elementor-placeholder-image.webp";
 import { useState } from "react";
+
+import DetailCardLoader from "@/app/skeletonLoading/detailCardLoader";
+import placeholderimg from "../../../../public/images/elementor-placeholder-image.webp";
 import { GET_PRODUCT_DETAILS } from "@/app/queries";
 import { Product, Variant } from "@/app/types";
 
@@ -48,7 +49,7 @@ const ProductDetail = () => {
 
   return (
     <div className="container mx-auto p-4 blur-bg my-10 bg-[#f5f3ec]">
-      <div className="flex flex-col lg:flex-row +bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg p-6">
+      <div className="flex flex-col bg-white lg:flex-row +bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg p-6">
         <div className="lg:w-1/2">
           <div className="my-10 md:flex md:justify-center sm:flex sm:justify-center">
             <Image

@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  background: #f5f3ec !important;
+}
 
 h2 {
   font-size: 50px;
@@ -27,47 +30,8 @@ h2 {
   transition: 0.3s ease-in-out;
 }
 
-/* .primary {
-  li {
-    display: flex;
-    flex-direction: row;
-    font-size: 16px;
-    list-style: none !important;
-  }
-
-  .tag-item {
-    color: #000000;
-    margin-right: 1.25rem;
-  }
-
-  .tag-item:hover {
-    --tw-text-opacity: 1 !important;
-    color: rgb(210, 79, 79) !important;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-    transition-duration: 300ms;
-  }
-}
-
-.secondary {
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
-  list-style: none !important;
-
-  .tag-item {
-    color: #000000;
-  }
-
-  .tag-item:hover {
-    --tw-text-opacity: 1 !important;
-    color: rgb(210, 79, 79) !important;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-    transition-duration: 300ms;
-  }
-} */
-
 /* css */
-.primary li {
+/* .primary li {
   display: flex;
   flex-direction: row;
   font-size: 16px;
@@ -103,4 +67,4 @@ h2 {
   color: rgb(210, 79, 79) !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 300ms;
-}
+} */

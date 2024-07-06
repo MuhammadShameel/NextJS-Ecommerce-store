@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import logoImg from "../../../public/images/coral-logo.png";
-import paymentIcon from "../../../public/images/icons_payment.png";
-
 import { MdArrowUpward } from "react-icons/md";
 import Link from "next/link";
+
+import logoImg from "../../../public/images/coral-logo.png";
+import paymentIcon from "../../../public/images/icons_payment.png";
 
 const Footer = () => {
   return (

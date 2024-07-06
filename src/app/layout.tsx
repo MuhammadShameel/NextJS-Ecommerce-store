@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@/app/style/global.scss";
+
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import { ApolloWrapper } from "./lib/apollo-wrapper";
