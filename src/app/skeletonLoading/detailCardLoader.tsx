@@ -3,7 +3,7 @@
 const ProductLoaderCard = () => {
   return (
     <div className=" bg-[#f5f3ec] p-4 my-10">
-      <div className="container mx-auto p-5 rounded-lg bg-white shadow-md hover:shadow-xl">
+      <div className="container mx-auto p-5 rounded-lg bg-white shadow-md">
         <div className="flex flex-col lg:flex-row">
           <div className="mt-5 ">
             <div className="w-[500px] h-[400px] rounded-b-lg rounded-t-lg bg-gray-300 "></div>

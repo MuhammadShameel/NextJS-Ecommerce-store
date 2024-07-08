@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
+
 import { MenuItemProps } from "../types";
 import "@/app/style/global.scss";
-// import "./globals.scss";
 
 const MenuItem = ({ text, slug, isActive, variant }: MenuItemProps) => {
   return (

@@ -76,11 +76,15 @@ export type MenuItemProps = {
   slug: string;
   isActive: boolean;
   variant: "primary" | "secondary";
-  onClick: (slug: string) => void;
 };
 
 export type CardProps = {
-  product: Product;
+  // product: Product;
+  href: string;
+  title: string;
+  slug: string;
+  imageUrl: string;
+  price: string;
   imageWidth?: number;
   imageHeight?: number;
 };

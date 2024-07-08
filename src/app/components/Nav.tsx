@@ -1,26 +1,25 @@
 "use client";
+
 import React from "react";
-import { FiSearch } from "react-icons/fi";
+// import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
+// import { BsPersonFill } from "react-icons/bs";
+// import { BiSolidShoppingBag } from "react-icons/bi";
+// import { useState } from "react";
+
 import logoImg from "../../../public/images/official-logo.jpg";
-import { BsPersonFill } from "react-icons/bs";
-import { BiSolidShoppingBag } from "react-icons/bi";
-import { useState } from "react";
 
 const Nav = () => {
-  const [isTopMenuOpen, setIsTopMenuOpen] = useState(false);
-  // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-
   return (
     <div className="bg-[#f5f3ec]">
       <div className="container mx-auto font-roboto ">
         <nav className="flex items-center justify-between flex-wrap  p-6 ">
           <div className="w-full flex-grow flex lg:items-center lg:w-auto">
-            <button className="hidden lg:flex items-center py-2 lg:w-[181.55px] text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out">
+            {/* <button className="hidden lg:flex items-center py-2 lg:w-[181.55px] text-primary hover:text-gray-500 transition-colors duration-300 ease-in-out">
               <FiSearch className="text-xl" />
-            </button>
+            </button> */}
 
-            <div className="flex items-center flex-shrink-0 text-white lg:mx-auto">
+            <div className=" items-center mx-auto flex-shrink-0 text-white ">
               <Image
                 className="log-img object-contain aspect-[10/2] mix-blend-darken"
                 src={logoImg}
@@ -30,7 +29,7 @@ const Nav = () => {
 
             {/* for medium screen  */}
 
-            <div className="ml-auto lg:hidden">
+            {/* <div className="ml-auto lg:hidden">
               <button
                 id="dropdownMenuIconButton"
                 className="inline-flex items-center p-2 text-sm font-medium text-center rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
@@ -47,11 +46,11 @@ const Nav = () => {
                   <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                 </svg>
               </button>
-            </div>
+            </div> */}
 
             {/* for medium screen  */}
 
-            <div className="text-sm text-right lg:flex hidden ">
+            {/* <div className="text-sm text-right lg:flex hidden ">
               <a
                 href="#account"
                 className="block mt-4 lg:inline-block lg:mt-0 text-primary hover:text-gray-500 mr-4 transition-colors duration-300 ease-in-out"
@@ -101,10 +100,10 @@ const Nav = () => {
                   </span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </nav>
-        <hr className="border-t-2 border-gray-700" />
+        <hr className="border-t-2 border-gray-700 w-100" />
       </div>
     </div>
   );
