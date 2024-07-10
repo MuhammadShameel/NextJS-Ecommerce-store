@@ -20,7 +20,6 @@ export default function Home() {
   const {
     loading: tagsLoading,
     error: tagsError,
-    // data: tagsData,
     menuItems,
   } = useGetTags("cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==");
   const slug = queryParameters.get("tag");
@@ -30,8 +29,6 @@ export default function Home() {
     error: productsError,
     data: productsData,
   } = useGetProducts(["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="], tagId);
-
-  if (tagsError) return <p>Error: {productsError?.message}</p>;
 
   useEffect(() => {
     if (search && menuItems) {
@@ -45,6 +42,9 @@ export default function Home() {
       setTagId("");
     }
   }, [search, menuItems]);
+
+  if (tagsError) return <p>Error: {tagsError?.message}</p>;
+  if (productsError) return <p>Error: {productsError.message}</p>;
 
   return (
     <div className="bg-[#f5f3ec]">
