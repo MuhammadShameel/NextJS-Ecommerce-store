@@ -13,6 +13,7 @@ const Nav = () => {
       <div className="container mx-auto font-roboto ">
         <nav className="flex items-center justify-between flex-wrap  p-6 ">
           <div className="w-full flex-grow flex lg:items-center lg:w-auto">
+            <div className="flex space-x-2 text-2xl font-semibold w-[88px] h-[24px]"></div>
             <div className=" items-center mx-auto flex-shrink-0 text-white ">
               <Image
                 className="log-img object-contain aspect-[8/2] mix-blend-darken"

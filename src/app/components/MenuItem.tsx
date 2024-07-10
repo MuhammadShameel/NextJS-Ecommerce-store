@@ -8,17 +8,19 @@ import "@/app/style/global.scss";
 
 const MenuItem = ({ text, slug, isActive, variant }: MenuItemProps) => {
   return (
-    <li className={`mr-5`}>
-      <Link
-        href={`/?tag=${slug}`}
-        scroll={false}
-        className={`hover-underline-animation ${
-          isActive ? " font-bold text-[#aa071c]  " : ""
-        } ${variant}`}
-      >
-        {text}
-      </Link>
-    </li>
+    <div className="mx-auto">
+      <li className={`mr-5`}>
+        <Link
+          href={`/?tag=${slug}`}
+          scroll={false}
+          className={`hover-underline-animation ${
+            isActive ? " font-bold text-[#aa071c]  " : ""
+          } ${variant}`}
+        >
+          {text}
+        </Link>
+      </li>
+    </div>
   );
 };
 

@@ -55,7 +55,7 @@ export default function Home() {
         <h3 className="text-center py-5 text-3xl text-black font-semibold">
           Experience the Art of Food
         </h3>
-        <div className="flex  items-center justify-between py-7">
+        <div className="flex  items-center justify-center py-7">
           <div className="flex">
             <ul className="flex">
               <li className="mr-5">
@@ -91,10 +91,6 @@ export default function Home() {
                   })}
             </ul>
           </div>
-          <button className="text-white py-2 px-4 rounded flex align-middle bg-gray-800 ">
-            <FaFilter className="text-xl pr-1" />
-            Filter
-          </button>
         </div>
       </div>
       <div className="container mx-auto">
