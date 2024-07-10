@@ -47,71 +47,69 @@ export default function Home() {
   if (productsError) return <p>Error: {productsError.message}</p>;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="bg-[#f5f3ec]">
-        <div className="container mx-auto">
-          <h3 className="text-center py-5 text-3xl text-black font-semibold">
-            Experience the Art of Food
-          </h3>
-          <div className="flex  items-center justify-center py-7">
-            <div className="flex">
-              <ul className="flex">
-                <li className="mr-5">
-                  <Link
-                    href="/"
-                    scroll={false}
-                    className={`${
-                      !slug || slug === "all-products"
-                        ? "font-bold text-[#aa071c]"
-                        : ""
-                    }  hover-underline-animation text-[#000000] transition-colors duration-300 ease-in-out`}
-                  >
-                    All Products
-                  </Link>
-                </li>
-                {tagsLoading
-                  ? [...Array(9)].map((_, index) => (
-                      <li key={index} className="mr-5">
-                        <div className="font-sans bg-gray-200 h-6 w-20 animate-pulse"></div>
-                      </li>
-                    ))
-                  : menuItems.map((menuItem) => {
-                      const isActive = menuItem.slug === slug;
-                      return (
-                        <MenuItem
-                          key={menuItem._id}
-                          text={menuItem.displayTitle}
-                          slug={menuItem.slug}
-                          variant="primary"
-                          isActive={isActive}
-                        />
-                      );
-                    })}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto">
-          <div className="cards flex flex-wrap">
-            {productsLoading ? (
-              <CardLoader />
-            ) : (
-              productsData?.map((product: any) => {
-                return (
-                  <Card
-                    key={product.id}
-                    href={`/products/${product.slug}`}
-                    title={product.title}
-                    slug={product.slug}
-                    imageUrl={product.imageUrl}
-                    price={product.price}
-                  />
-                );
-              })
-            )}
+    <div className="bg-[#f5f3ec]">
+      <div className="container mx-auto">
+        <h3 className="text-center py-5 text-3xl text-black font-semibold">
+          Experience the Art of Food
+        </h3>
+        <div className="flex  items-center justify-center py-7">
+          <div className="flex">
+            <ul className="flex">
+              <li className="mr-5">
+                <Link
+                  href="/"
+                  scroll={false}
+                  className={`${
+                    !slug || slug === "all-products"
+                      ? "font-bold text-[#aa071c]"
+                      : ""
+                  }  hover-underline-animation text-[#000000] transition-colors duration-300 ease-in-out`}
+                >
+                  All Products
+                </Link>
+              </li>
+              {tagsLoading
+                ? [...Array(9)].map((_, index) => (
+                    <li key={index} className="mr-5">
+                      <div className="font-sans bg-gray-200 h-6 w-20 animate-pulse"></div>
+                    </li>
+                  ))
+                : menuItems.map((menuItem) => {
+                    const isActive = menuItem.slug === slug;
+                    return (
+                      <MenuItem
+                        key={menuItem._id}
+                        text={menuItem.displayTitle}
+                        slug={menuItem.slug}
+                        variant="primary"
+                        isActive={isActive}
+                      />
+                    );
+                  })}
+            </ul>
           </div>
         </div>
       </div>
-    </Suspense>
+      <div className="container mx-auto">
+        <div className="cards flex flex-wrap">
+          {productsLoading ? (
+            <CardLoader />
+          ) : (
+            productsData?.map((product: any) => {
+              return (
+                <Card
+                  key={product.id}
+                  href={`/products/${product.slug}`}
+                  title={product.title}
+                  slug={product.slug}
+                  imageUrl={product.imageUrl}
+                  price={product.price}
+                />
+              );
+            })
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
