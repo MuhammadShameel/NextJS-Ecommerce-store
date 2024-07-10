@@ -46,8 +46,6 @@ export default function Home() {
     }
   }, [search, menuItems]);
 
-  if (tagsError || tagsError) return <p>Error loading data...</p>;
-
   return (
     <div className="bg-[#f5f3ec]">
       <div className="container mx-auto">
