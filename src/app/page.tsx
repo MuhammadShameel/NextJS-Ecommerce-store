@@ -52,7 +52,9 @@ export default function Home() {
   return (
     <div className="bg-[#f5f3ec]">
       <div className="container mx-auto">
-        <h2 className="text-center py-5">Experience the Art of Food</h2>
+        <h3 className="text-center py-5 text-3xl text-black font-semibold">
+          Experience the Art of Food
+        </h3>
         <div className="flex  items-center justify-between py-7">
           <div className="flex">
             <ul className="flex">
@@ -61,8 +63,10 @@ export default function Home() {
                   href="/"
                   scroll={false}
                   className={`${
-                    !slug || slug === "all-products" ? "font-bold" : ""
-                  } hover:text-red-500 text-[#000000] transition-colors duration-300 ease-in-out`}
+                    !slug || slug === "all-products"
+                      ? "font-bold text-[#aa071c]"
+                      : ""
+                  }  hover-underline-animation text-[#000000] transition-colors duration-300 ease-in-out`}
                 >
                   All Products
                 </Link>
