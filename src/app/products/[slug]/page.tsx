@@ -9,6 +9,8 @@ import DetailCardLoader from "@/app/skeletonLoading/detailCardLoader";
 import placeholderimg from "../../../../public/images/elementor-placeholder-image.webp";
 import { GET_PRODUCT_DETAILS } from "@/app/queries";
 import { Product, Variant } from "@/app/types";
+import { useCart } from "@/app/context/CartContext";
+import Notification from "@/app/components/Notification";
 
 const ProductDetail = () => {
   const params = useParams<{ slug: string }>();
@@ -24,6 +26,9 @@ const ProductDetail = () => {
   });
 
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
+  const [showNotification, setShowNotification] = useState(false);
+  const [quantity, setQuantity] = useState<number>(1);
+  const { addToCart } = useCart();
 
   if (loading) return <DetailCardLoader />;
   if (error) {
@@ -45,6 +50,17 @@ const ProductDetail = () => {
 
   const renderPrice = (variant: Variant) => {
     return <>{variant.pricing[0].displayPrice}</>;
+  };
+
+  const handleAddToCart = () => {
+    if (selectedVariant) {
+      addToCart(product, selectedVariant, quantity);
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 2000);
+      setQuantity(1);
+    }
   };
 
   return (
@@ -96,11 +112,30 @@ const ProductDetail = () => {
               ))}
             </div>
           </div>
-          <button className="bg-black text-white px-4 py-2 w-full rounded mt-4">
+          <div className="mt-4 flex items-center">
+            <button
+              className="bg-gray-200 text-black px-2 py-1 rounded"
+              onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+            >
+              -
+            </button>
+            <span className="mx-4">{quantity}</span>
+            <button
+              className="bg-gray-200 text-black px-2 py-1 rounded"
+              onClick={() => setQuantity(quantity + 1)}
+            >
+              +
+            </button>
+          </div>
+          <button
+            className="bg-black text-white px-4 py-2 w-full rounded mt-4"
+            onClick={handleAddToCart}
+          >
             Add to cart
           </button>
         </div>
       </div>
+      {showNotification && <Notification message="Added to cart!" />}
     </div>
   );
 };

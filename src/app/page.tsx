@@ -1,27 +1,24 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { FaFilter } from "react-icons/fa6";
 import Link from "next/link";
-
 import MenuItem from "@/app/components/MenuItem";
 import "@/app/globals.css";
 import CardLoader from "@/app/skeletonLoading/cardLoader";
 import Card from "@/app/components/Card";
-
 import { useGetTags } from "@/app/hooks/useGetTags";
 import { useGetProducts } from "@/app/hooks/useGetProducts";
+import Notification from "@/app/components/Notification"; // Import Notification component
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
   const queryParameters = useSearchParams();
   const search = queryParameters.get("tag");
 
   const {
     loading: tagsLoading,
     error: tagsError,
-    // data: tagsData,
     menuItems,
   } = useGetTags("cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ==");
   const slug = queryParameters.get("tag");
@@ -31,8 +28,6 @@ export default function Home() {
     error: productsError,
     data: productsData,
   } = useGetProducts(["cmVhY3Rpb24vc2hvcDpGN2ZrM3plR3o4anpXaWZzQQ=="], tagId);
-
-  if (tagsError) return <p>Error: {productsError?.message}</p>;
 
   useEffect(() => {
     if (search && menuItems) {
@@ -47,13 +42,16 @@ export default function Home() {
     }
   }, [search, menuItems]);
 
-  if (tagsError || tagsError) return <p>Error loading data...</p>;
+  if (tagsError) return <p>Error: {tagsError?.message}</p>;
+  if (productsError) return <p>Error: {productsError.message}</p>;
 
   return (
     <div className="bg-[#f5f3ec]">
       <div className="container mx-auto">
-        <h2 className="text-center py-5">Experience the Art of Food</h2>
-        <div className="flex  items-center justify-between py-7">
+        <h3 className="text-center py-5 text-3xl text-black font-semibold">
+          Experience the Art of Food
+        </h3>
+        <div className="flex items-center justify-center py-7">
           <div className="flex">
             <ul className="flex">
               <li className="mr-5">
@@ -61,8 +59,10 @@ export default function Home() {
                   href="/"
                   scroll={false}
                   className={`${
-                    !slug || slug === "all-products" ? "font-bold" : ""
-                  } hover:text-red-500 text-[#000000] transition-colors duration-300 ease-in-out`}
+                    !slug || slug === "all-products"
+                      ? "font-bold text-[#aa071c]"
+                      : ""
+                  }  hover-underline-animation text-[#000000] transition-colors duration-300 ease-in-out`}
                 >
                   All Products
                 </Link>
@@ -87,14 +87,10 @@ export default function Home() {
                   })}
             </ul>
           </div>
-          <button className="text-white py-2 px-4 rounded flex align-middle bg-gray-800 ">
-            <FaFilter className="text-xl pr-1" />
-            Filter
-          </button>
         </div>
       </div>
       <div className="container mx-auto">
-        <div className="cards flex flex-wrap">
+        <div className="cards flex justify-center flex-wrap">
           {productsLoading ? (
             <CardLoader />
           ) : (
@@ -113,6 +109,8 @@ export default function Home() {
           )}
         </div>
       </div>
+      {/* Conditionally render the notification */}
+      {showNotification && <Notification message="Item added to cart!" />}
     </div>
   );
 }
