@@ -1,18 +1,3 @@
-// "use client";
-// import { useState } from "react";
-// import { useQuery } from "@apollo/client";
-
-// import { GET_PRODUCTS } from "../queries";
-
-// const [tagId] = useState("");
-// export const useGetProduct = (shopId: string) => {
-//   const { loading, error, data } = useQuery(GET_PRODUCTS, {
-//     variables: { shopId, tagIds: tagId ? [tagId] : null },
-//   });
-//   return { loading, error, data };
-// };
-// src/hooks/useGetProducts.ts
-
 // src/hooks/useGetProducts.ts
 import { useQuery } from "@apollo/client";
 import { GET_PRODUCTS } from "../queries";

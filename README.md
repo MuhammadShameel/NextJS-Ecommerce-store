@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Next.js Ecommerce Store
+## Description
 
-First, run the development server:
+This project is a fully functional ecommerce store built with Next.js, Tailwind CSS, and GraphQL. It follows SOLID principles and makes use of smart components to ensure a maintainable and scalable codebase. The store features a dynamic product listing based on tags and categories, providing a seamless shopping experience.
+
+
+## Demo
+
+Click for live [Demo](https://next-js-ecommerce-store-nu.vercel.app/)
+
+
+
+## Installation
+
+To get started with this project, clone the repository and install the dependencies:
 
 ```bash
+git clone https://github.com/MuhammadShameel/NextJS-Ecommerce-store.git
+cd next-ecommerce-store
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+    
+![Logo](https://next-js-ecommerce-store-nu.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffood-logo.b85ce655.png&w=384&q=75)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Run the development server:
+```javascript
+npm run dev
+```
+Open http://localhost:3000 with your browser to see the result.
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+### Main Components
+Home: The main component that fetches and displays products and categories.
+Card: Component to display individual product details.
+MenuItem: Component for displaying navigation menu items.
+### GraphQL Queries
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+GET_PRODUCTS: Fetches products based on tags and categories.
+GET_TAGS: Fetches available product tags.
+GET_PRODUCT_DETAILS: Fetches detailed information about a specific product.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## License
+This project is licensed under the [MIT License](https://github.com/MuhammadShameel/NextJS-Ecommerce-store/blob/master/LICENSE).
+
