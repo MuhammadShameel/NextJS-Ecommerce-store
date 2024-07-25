@@ -9,6 +9,19 @@ import cartPlaceholder from "../../../public/images/catering-item-placeholder.pn
 const CartModal = ({ onClose }: { onClose: () => void }) => {
   const { cart, removeFromCart } = useCart();
 
+  const parsePrice = (price: string) => {
+    const cleanedPrice = price.replace(/[^\d.]/g, "");
+    const finalPrice = cleanedPrice.replace(/^\./, "");
+    return parseFloat(finalPrice);
+  };
+
+  const getTotalPrice = () => {
+    return cart.reduce((total, item) => {
+      const itemPrice = parsePrice(item.variant.pricing[0].displayPrice);
+      return total + itemPrice * item.quantity;
+    }, 0);
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded shadow-lg w-11/12 md:w-1/2 lg:w-1/3">
@@ -51,6 +64,11 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
                 </button>
               </div>
             ))}
+            <div className="mt-4 text-right">
+              <p className="text-xl font-semibold">
+                Total: Rs. {getTotalPrice().toFixed(2)}
+              </p>
+            </div>
           </div>
         )}
       </div>
