@@ -1,19 +1,18 @@
 "use client";
-
 import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-
 import MenuItem from "@/app/components/MenuItem";
 import "@/app/globals.css";
 import CardLoader from "@/app/skeletonLoading/cardLoader";
 import Card from "@/app/components/Card";
-
 import { useGetTags } from "@/app/hooks/useGetTags";
 import { useGetProducts } from "@/app/hooks/useGetProducts";
+import Notification from "@/app/components/Notification"; // Import Notification component
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
   const queryParameters = useSearchParams();
   const search = queryParameters.get("tag");
 
@@ -52,7 +51,7 @@ export default function Home() {
         <h3 className="text-center py-5 text-3xl text-black font-semibold">
           Experience the Art of Food
         </h3>
-        <div className="flex  items-center justify-center py-7">
+        <div className="flex items-center justify-center py-7">
           <div className="flex">
             <ul className="flex">
               <li className="mr-5">
@@ -91,7 +90,7 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto">
-        <div className="cards flex flex-wrap">
+        <div className="cards flex justify-center flex-wrap">
           {productsLoading ? (
             <CardLoader />
           ) : (
@@ -110,6 +109,8 @@ export default function Home() {
           )}
         </div>
       </div>
+      {/* Conditionally render the notification */}
+      {showNotification && <Notification message="Item added to cart!" />}
     </div>
   );
 }
