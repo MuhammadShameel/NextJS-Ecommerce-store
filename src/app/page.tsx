@@ -9,6 +9,7 @@ import Card from "@/app/components/Card";
 import { useGetTags } from "@/app/hooks/useGetTags";
 import { useGetProducts } from "@/app/hooks/useGetProducts";
 import Notification from "@/app/components/Notification"; // Import Notification component
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
@@ -47,6 +48,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#f5f3ec]">
+      <HeroSection />
       <div className="container mx-auto">
         <h3 className="text-center py-5 text-3xl text-black font-semibold">
           Experience the Art of Food
