@@ -8,8 +8,8 @@ import CardLoader from "@/app/skeletonLoading/cardLoader";
 import Card from "@/app/components/Card";
 import { useGetTags } from "@/app/hooks/useGetTags";
 import { useGetProducts } from "@/app/hooks/useGetProducts";
-import Notification from "@/app/components/Notification"; // Import Notification component
-import HeroSection from "./components/HeroSection";
+import Notification from "@/app/components/Notification";
+// import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
@@ -48,14 +48,14 @@ export default function Home() {
 
   return (
     <div className="bg-[#f5f3ec]">
-      <HeroSection />
+      {/* <HeroSection /> */}
       <div className="container mx-auto">
-        <h3 className="text-center py-5 text-3xl text-black font-semibold">
+        <h3 className="text-center py-5 text-3xl text-black font-semibold ">
           Experience the Art of Food
         </h3>
         <div className="flex items-center justify-center py-7">
           <div className="flex">
-            <ul className="flex">
+            <ul className="flex flex-wrap">
               <li className="mr-5">
                 <Link
                   href="/"
@@ -72,7 +72,7 @@ export default function Home() {
               {tagsLoading
                 ? [...Array(9)].map((_, index) => (
                     <li key={index} className="mr-5">
-                      <div className="font-sans bg-gray-200 h-6 w-20 animate-pulse"></div>
+                      <div className="font-sans bg-gray-200  h-6 w-20 animate-pulse"></div>
                     </li>
                   ))
                 : menuItems.map((menuItem) => {
