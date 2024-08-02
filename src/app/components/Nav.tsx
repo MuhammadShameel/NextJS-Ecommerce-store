@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-// import { FiSearch } from "react-icons/fi";
 import Image from "next/image";
 import { CiSearch, CiUser, CiShoppingCart } from "react-icons/ci";
 import { useCart } from "@/app/context/CartContext";
 
-import logoImg from "../../../public/images/official-logo.jpg";
+import logoImg from "../../../public/images/pepzilogo.png";
 import CartModal from "@/app/components/CartModal";
 
 const Nav = () => {
@@ -19,36 +18,81 @@ const Nav = () => {
   const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
   return (
-    <div className="bg-[#f5f3ec]">
+    <div className="bg-white">
       <div className="container mx-auto font-roboto">
         <nav className="flex items-center justify-between flex-wrap p-6">
-          <div className="w-full flex-grow flex lg:items-center lg:w-auto">
-            <div className="flex space-x-2 text-2xl font-semibold w-[88px] h-[24px]"></div>
-            <div className="items-center mx-auto flex-shrink-0 text-white">
-              <Image
-                className="log-img object-contain aspect-[8/2] mix-blend-darken"
-                src={logoImg}
-                alt="Logo"
-              />
-            </div>
-            <div className="flex space-x-2 text-2xl font-semibold relative">
-              <CiSearch className="text-black cursor-pointer hover:text-[#aa071c] transition ease-in-out duration-300" />
-              <CiUser className="text-black cursor-pointer hover:text-[#aa071c] transition ease-in-out duration-300" />
-              <div className="relative">
-                <CiShoppingCart
-                  className="text-black cursor-pointer hover:text-[#aa071c] transition ease-in-out duration-300"
-                  onClick={openCart}
-                />
-                {cartItemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartItemCount}
-                  </span>
-                )}
-              </div>
-            </div>
+          {/* Logo */}
+          <div className="flex items-center flex-shrink-0 text-black mr-6">
+            <Image
+              className="log-img object-contain h-10 w-24 mix-blend-darken"
+              src={logoImg}
+              alt="Logo"
+            />
+          </div>
+          {/* Navigation Links */}
+          <div className="hidden md:flex md:flex-grow md:items-center md:justify-center">
+            <ul className="flex space-x-8">
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  aria-current="page"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          {/* Icons */}
+          <div className="flex items-center space-x-4">
+            <button
+              className="text-gray-900 hover:text-blue-700"
+              onClick={openCart}
+            >
+              <CiShoppingCart size={24} />
+              {cartItemCount > 0 && (
+                <span className="ml-1 text-sm font-semibold">
+                  {cartItemCount}
+                </span>
+              )}
+            </button>
+            <button className="text-gray-900 hover:text-blue-700">
+              <CiUser size={24} />
+            </button>
           </div>
         </nav>
-        <hr className="border-t-2 border-gray-700 w-100" />
       </div>
       {isCartOpen && <CartModal onClose={closeCart} />}
     </div>
