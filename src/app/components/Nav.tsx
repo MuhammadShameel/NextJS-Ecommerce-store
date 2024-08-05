@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { CiSearch, CiUser, CiShoppingCart } from "react-icons/ci";
+import { CiUser, CiShoppingCart } from "react-icons/ci";
+import { MdFavorite } from "react-icons/md";
 import { useCart } from "@/app/context/CartContext";
 
 import logoImg from "../../../public/images/pepzilogo.png";
@@ -77,8 +78,11 @@ const Nav = () => {
           </div>
           {/* Icons */}
           <div className="flex items-center space-x-4">
+            <button className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out">
+              <MdFavorite size={24} />
+            </button>
             <button
-              className="text-gray-900 hover:text-[#f2252a]"
+              className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out"
               onClick={openCart}
             >
               <CiShoppingCart size={24} />
@@ -88,7 +92,7 @@ const Nav = () => {
                 </span>
               )}
             </button>
-            <button className="text-gray-900 hover:text-[#f2252a]">
+            <button className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out">
               <CiUser size={24} />
             </button>
           </div>
