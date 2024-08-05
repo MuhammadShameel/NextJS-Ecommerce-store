@@ -2,12 +2,12 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-center bg-no-repeat bg-[url('../../public/images/24.jpg')] bg-gray-700 bg-blend-multiply">
+    <section className="bg-center bg-no-repeat bg-[url('../../public/images/24.jpg')]  ">
       <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-        <h4 className=" text-3xl font-bold mb-4  tracking-tight leading-none text-[#b11200]">
+        <h4 className=" text-3xl font-bold mb-4  tracking-tight leading-none text-black">
           CREATES A MODERATE CRUNCH
         </h4>
-        <p className="mb-8 text-xl font-normal text-yellow-400 lg:text-xl sm:px-16 lg:px-48">
+        <p className="mb-8 text-xl font-normal text-black lg:text-xl sm:px-16 lg:px-48">
           100% FRESH FOOD
         </p>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
