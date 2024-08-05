@@ -9,7 +9,7 @@ import Card from "@/app/components/Card";
 import { useGetTags } from "@/app/hooks/useGetTags";
 import { useGetProducts } from "@/app/hooks/useGetProducts";
 import Notification from "@/app/components/Notification";
-// import HeroSection from "./components/HeroSection";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   const [tagId, setTagId] = useState("");
@@ -47,8 +47,53 @@ export default function Home() {
   if (productsError) return <p>Error: {productsError.message}</p>;
 
   return (
-    <div className="bg-[#f5f3ec]">
-      {/* <HeroSection /> */}
+    <div className="bg-[#f4f1e9] ">
+      <HeroSection />
+      <div className="container mx-auto">
+        <section className="offers-section px-4 top-[-50px] relative">
+          <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-5/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-6.jpg')] text-white p-8 ">
+              <div className="text-left">
+                <h2 className="text-2xl md:text-2xl font-bold mb-4">
+                  Drinks Offer
+                </h2>
+                <p className="mb-4">Soft Drinks </p>
+                <Link href={"/products/soft-drinks"}>
+                  <button className="border border-white text-white bg-transparent px-4 py-2 rounded-full hover:bg-red-500 hover:border-red-500 transition duration-300 ease-in-out">
+                    Order Now
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className="w-full md:w-4/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-7.jpg')] text-white p-8 ">
+              <div className="text-left">
+                <h2 className="text-2xl md:text-2xl font-bold mb-4">
+                  Pizza Offer
+                </h2>
+                <p className="mb-4">3 Small Pizaas +3 (345ml) Drinks</p>
+                <Link
+                  className="border border-white text-white bg-transparent px-4 py-2 rounded-full hover:bg-red-500 hover:border-red-500 transition duration-300 ease-in-out"
+                  href={"/products/3-small-pizaas-3-345ml-drinks"}
+                >
+                  Order Now
+                </Link>
+              </div>
+            </div>
+            <div className="w-full md:w-3/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-8.jpg')] text-black p-8 ">
+              <div className="text-left">
+                <h2 className="text-2xl md:text-2xl font-bold mb-4">
+                  Explore Food
+                </h2>
+                <p className="mb-4">Order Your Favouriate Food</p>
+                <button className="border border-black text-black bg-transparent px-4 py-2 rounded-full hover:bg-red-500 hover:border-red-500 transition duration-300 ease-in-out">
+                  Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <div className="container mx-auto">
         <h3 className="text-center py-5 text-3xl text-black font-semibold ">
           Experience the Art of Food
