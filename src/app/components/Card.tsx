@@ -18,7 +18,7 @@ const Card = ({
 
   return (
     <div className="relative m-5 flex w-full max-w-[270px] flex-col overflow-hidden rounded-3xl bg-white transition-transform ease-in-out hover:shadow-md">
-      <MdFavorite className="relative left-56 mt-5 text-2xl text-[#f4f1e9] cursor-pointer hover:text-[#e9a70b] transition-colors duration-300 ease-in-out" />
+      <MdFavorite className="relative left-56 my-2 text-2xl text-[#f4f1e9] cursor-pointer hover:text-[#e9a70b] transition-colors duration-300 ease-in-out" />
       <Link className="relative flex overflow-hidden" href={href}>
         <Image
           className="object-cover"
