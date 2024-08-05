@@ -1,69 +1,40 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/effect-fade";
-import { Pagination, Autoplay, EffectFade } from "swiper/modules";
-import Image from "next/image";
-import slide1 from "../../../public/images/23.jpg";
-import slide2 from "../../../public/images/24.jpg";
 
 const HeroSection = () => {
   return (
-    <div className="relative h-screen">
-      <Swiper
-        pagination={{ clickable: true }}
-        modules={[Pagination, Autoplay, EffectFade]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        effect="fade"
-        className="h-full"
-      >
-        <SwiperSlide>
-          <div className="relative slide-content h-full">
-            <Image
-              src={slide1}
-              alt="Slide 1"
-              layout="fill"
-              objectFit="contain"
-            />
-            <div className="absolute inset-0   flex flex-col justify-center items-center text-center">
-              <h4 className="text-xl text-[#b11200] font-bold mb-4">
-                THE LITTLE ONE LOVE IT SO MUCH
-              </h4>
-              <h2 className="text-black text-3xl font-bold mb-4">
-                OF DELECIOUS SPICES
-              </h2>
-              <button className="px-6 py-3 bg-black text-white rounded-full">
-                SHOP NOW
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-full">
-            <Image
-              src={slide2}
-              alt="Slide 2"
-              layout="fill"
-              objectFit="contain"
-            />
-            <div className="absolute inset-0   flex flex-col justify-center items-center text-center">
-              <h4 className=" text-[#b11200] text-xl font-bold mb-4">
-                CREATES A MODERATE CRUNCH
-              </h4>
-              <h2 className="text-black text-3xl font-bold mb-4">
-                {" "}
-                100% FRESH FOOD
-              </h2>
-              <button className="px-6 py-3 bg-black text-white rounded-md">
-                SHOP NOW
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <section className="bg-center bg-no-repeat bg-[url('../../public/images/24.jpg')] bg-gray-700 bg-blend-multiply">
+      <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+        <h4 className=" text-3xl font-bold mb-4  tracking-tight leading-none text-[#b11200]">
+          CREATES A MODERATE CRUNCH
+        </h4>
+        <p className="mb-8 text-xl font-normal text-yellow-400 lg:text-xl sm:px-16 lg:px-48">
+          100% FRESH FOOD
+        </p>
+        <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+          <a
+            href="#"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-black focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+          >
+            SHOP NOW
+            <svg
+              className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   );
 };
 
