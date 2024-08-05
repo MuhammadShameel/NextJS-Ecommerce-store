@@ -35,7 +35,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-[#f2252a]"
                   aria-current="page"
                 >
                   Home
@@ -44,7 +44,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-[#f2252a]"
                 >
                   About
                 </a>
@@ -52,7 +52,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-[#f2252a]"
                 >
                   Services
                 </a>
@@ -60,7 +60,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-[#f2252a]"
                 >
                   Pricing
                 </a>
@@ -68,7 +68,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-blue-700"
+                  className="block py-2 px-3 font-semibold text-gray-900 hover:text-[#f2252a]"
                 >
                   Contact
                 </a>
@@ -78,7 +78,7 @@ const Nav = () => {
           {/* Icons */}
           <div className="flex items-center space-x-4">
             <button
-              className="text-gray-900 hover:text-blue-700"
+              className="text-gray-900 hover:text-[#f2252a]"
               onClick={openCart}
             >
               <CiShoppingCart size={24} />
@@ -88,7 +88,7 @@ const Nav = () => {
                 </span>
               )}
             </button>
-            <button className="text-gray-900 hover:text-blue-700">
+            <button className="text-gray-900 hover:text-[#f2252a]">
               <CiUser size={24} />
             </button>
           </div>
