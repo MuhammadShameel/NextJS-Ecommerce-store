@@ -13,8 +13,10 @@ const MenuItem = ({ text, slug, isActive, variant }: MenuItemProps) => {
         <Link
           href={`/?tag=${slug}`}
           scroll={false}
-          className={`hover-underline-animation ${
-            isActive ? " font-bold text-[#aa071c]  " : ""
+          className={` ${
+            isActive
+              ? "  text-black bg-[#e9a70b]  border-[#e9a70b] border rounded-full p-2  "
+              : "text-[#e9a70b] bg-transparent  border-[#e9a70b] border rounded-full p-2"
           } ${variant}`}
         >
           {text}
