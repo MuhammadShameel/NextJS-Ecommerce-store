@@ -107,9 +107,9 @@ export default function Home() {
                   scroll={false}
                   className={`${
                     !slug || slug === "all-products"
-                      ? "font-bold text-[#aa071c]"
-                      : ""
-                  }  hover-underline-animation text-[#000000] transition-colors duration-300 ease-in-out`}
+                      ? " text-black bg-[#e9a70b]  border-[#e9a70b] border rounded-full p-2"
+                      : "text-[#e9a70b]"
+                  }   bg-transparent border-[#e9a70b] border rounded-full p-2 transition-colors duration-300 ease-in-out`}
                 >
                   All Products
                 </Link>
