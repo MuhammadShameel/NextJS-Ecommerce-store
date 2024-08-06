@@ -1,31 +1,42 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MdFavorite } from "react-icons/md";
-
+import { useFavorites } from "@/app/context/FavoriteContext";
 import placeholderimg from "../../../public/images/dummy-img-white.png";
 import { CardProps } from "@/app/types";
 
-const Card = ({
-  title,
-  imageUrl,
-  href,
-  price,
-  imageWidth = 270,
-  imageHeight = 150,
-}: CardProps) => {
+const Card = ({ title, imageUrl, href, price, product }: CardProps) => {
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const isFavorite = favorites.some((fav) => fav._id === product._id);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      removeFromFavorites(product._id);
+    } else {
+      addToFavorites(product);
+    }
+  };
+
   const imageSrc = imageUrl || placeholderimg;
 
   return (
     <div className="relative m-5 flex w-full max-w-[270px] flex-col overflow-hidden rounded-3xl bg-white transition-transform ease-in-out hover:shadow-md">
-      <MdFavorite className="relative left-56 my-2 text-2xl text-[#f4f1e9] cursor-pointer hover:text-[#e9a70b] transition-colors duration-300 ease-in-out" />
+      <MdFavorite
+        className={`relative left-56 my-2 text-2xl cursor-pointer ${
+          isFavorite ? "text-[#e9a70b]" : "text-[#f4f1e9]"
+        } transition-colors duration-300 ease-in-out`}
+        onClick={toggleFavorite}
+      />
       <Link className="relative flex overflow-hidden" href={href}>
         <Image
           className="object-cover"
           src={imageSrc}
           alt="product image"
-          width={imageWidth}
-          height={imageHeight}
+          width={270}
+          height={150}
         />
       </Link>
       <div className="mt-4 px-3 pb-5">
