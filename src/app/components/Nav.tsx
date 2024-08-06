@@ -8,7 +8,7 @@ import { useCart } from "@/app/context/CartContext";
 
 import logoImg from "../../../public/images/pepzilogo.png";
 import CartModal from "@/app/components/CartModal";
-import { useFavorites } from "../context/FavoriteContext";
+// import { useFavorites } from "../context/FavoriteContext";
 import FavoriteModal from "./FavoriteModal";
 
 const Nav = () => {

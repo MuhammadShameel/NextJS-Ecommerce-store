@@ -144,6 +144,7 @@ export default function Home() {
             productsData?.map((product: any) => {
               return (
                 <Card
+                  product={product}
                   key={product.id}
                   href={`/products/${product.slug}`}
                   title={product.title}
