@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import { ApolloWrapper } from "./lib/apollo-wrapper";
 import { CartProvider } from "@/app/context/CartContext";
+import { FavoriteProvider } from "./context/FavoriteContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ApolloWrapper>
           <CartProvider>
-            <Nav />
-            {children}
-            <Footer />
+            <FavoriteProvider>
+              <Nav />
+              {children}
+              <Footer />
+            </FavoriteProvider>
           </CartProvider>
         </ApolloWrapper>
       </body>
