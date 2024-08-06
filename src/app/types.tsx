@@ -1,5 +1,7 @@
 // Interfaces for Products
 export interface Product {
+  [x: string]: any;
+  price: string;
   variants: Variant[];
   _id: string;
   title: string;
@@ -83,6 +85,7 @@ export type CardProps = {
   href: string;
   title: string;
   slug: string;
+  product: Product;
   imageUrl: string;
   price: string;
   imageWidth?: number;
