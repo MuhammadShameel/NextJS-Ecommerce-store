@@ -8,13 +8,19 @@ import { useCart } from "@/app/context/CartContext";
 
 import logoImg from "../../../public/images/pepzilogo.png";
 import CartModal from "@/app/components/CartModal";
+import { useFavorites } from "../context/FavoriteContext";
+import FavoriteModal from "./FavoriteModal";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isFavoriteOpen, setIsFavoriteOpen] = useState(false);
   const { cart } = useCart();
+  // const { favorites } = useFavorites();
 
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
+  const openFavorite = () => setIsFavoriteOpen(true);
+  const closeFavorite = () => setIsFavoriteOpen(false);
 
   const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
@@ -78,7 +84,10 @@ const Nav = () => {
           </div>
           {/* Icons */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out">
+            <button
+              className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out"
+              onClick={openFavorite}
+            >
               <MdFavorite size={24} />
             </button>
             <button
@@ -99,6 +108,7 @@ const Nav = () => {
         </nav>
       </div>
       {isCartOpen && <CartModal onClose={closeCart} />}
+      {isFavoriteOpen && <FavoriteModal onClose={closeFavorite} />}
     </div>
   );
 };
