@@ -8,19 +8,13 @@ import { useCart } from "@/app/context/CartContext";
 
 import logoImg from "../../../public/images/pepzilogo.png";
 import CartModal from "@/app/components/CartModal";
-// import { useFavorites } from "../context/FavoriteContext";
-import FavoriteModal from "./FavoriteModal";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isFavoriteOpen, setIsFavoriteOpen] = useState(false);
   const { cart } = useCart();
-  // const { favorites } = useFavorites();
 
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
-  const openFavorite = () => setIsFavoriteOpen(true);
-  const closeFavorite = () => setIsFavoriteOpen(false);
 
   const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
@@ -84,31 +78,27 @@ const Nav = () => {
           </div>
           {/* Icons */}
           <div className="flex items-center space-x-4">
-            <button
-              className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out"
-              onClick={openFavorite}
-            >
+            <a href="#" className="text-gray-900 hover:text-[#f2252a]">
+              <CiUser size={24} />
+            </a>
+            <button className="relative text-gray-900 hover:text-[#f2252a]">
               <MdFavorite size={24} />
             </button>
             <button
-              className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out"
               onClick={openCart}
+              className="relative text-gray-900 hover:text-[#f2252a]"
             >
               <CiShoppingCart size={24} />
               {cartItemCount > 0 && (
-                <span className="ml-1 text-sm font-semibold">
+                <span className="absolute top-0 right-0 block h-4 w-4 rounded-full bg-red-600 text-white text-xs text-center">
                   {cartItemCount}
                 </span>
               )}
-            </button>
-            <button className="text-gray-900 hover:text-[#f2252a] transition-colors duration-300 ease-in-out">
-              <CiUser size={24} />
             </button>
           </div>
         </nav>
       </div>
       {isCartOpen && <CartModal onClose={closeCart} />}
-      {isFavoriteOpen && <FavoriteModal onClose={closeFavorite} />}
     </div>
   );
 };
