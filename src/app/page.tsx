@@ -51,9 +51,9 @@ export default function Home() {
       <HeroSection />
       <div className="container mx-auto">
         <section className="offers-section px-4 top-[-50px] relative">
-          <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-5/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-6.jpg')] text-white p-8 ">
-              <div className="text-left">
+          <div className="flex flex-col md:flex-row lg:h-[300px]">
+            <div className="w-full md:w-5/12 flex items-center   justify-start text-white p-8 bg-image-zoom-drinks">
+              <div className="text-left z-10">
                 <h2 className="text-2xl md:text-2xl font-bold mb-4">
                   Drinks Offer
                 </h2>
@@ -65,8 +65,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="w-full md:w-4/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-7.jpg')] text-white p-8 ">
-              <div className="text-left">
+            <div className="w-full md:w-4/12 flex items-center justify-start text-white p-8 bg-image-zoom-pizza">
+              <div className="text-left  z-10">
                 <h2 className="text-2xl md:text-2xl font-bold mb-4">
                   Pizza Offer
                 </h2>
@@ -79,8 +79,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="w-full md:w-3/12 flex items-center justify-start bg-center bg-no-repeat bg-cover bg-[url('../../public/images/banner-8.jpg')] text-black p-8 ">
-              <div className="text-left">
+            <div className="w-full md:w-3/12 flex items-center justify-start text-black p-8 bg-image-zoom-food">
+              <div className="text-left  z-10">
                 <h2 className="text-2xl md:text-2xl font-bold mb-4">
                   Explore Food
                 </h2>
@@ -105,19 +105,19 @@ export default function Home() {
                 <Link
                   href="/"
                   scroll={false}
-                  className={`${
+                  className={` ${
                     !slug || slug === "all-products"
-                      ? " text-black bg-[#e9a70b] opacity-100  border-[#e9a70b] border rounded-full p-2"
-                      : "border-[#272727] "
-                  } text-[#272727] opacity-[0.3]  bg-transparent border rounded-full p-2 transition-colors duration-300 ease-in-out`}
+                      ? " text-black  bg-[#e9a70b] opacity-100  border-[#e9a70b] border rounded-full p-2"
+                      : "border-[#272727] opacity-[0.3]"
+                  } text-[#272727]  capitalize  border rounded-full p-2 transition-colors duration-300 ease-in-out`}
                 >
                   All Products
                 </Link>
               </li>
               {tagsLoading
                 ? [...Array(9)].map((_, index) => (
-                    <li key={index} className="mr-5">
-                      <div className="font-sans bg-gray-200  h-6 w-20 animate-pulse"></div>
+                    <li key={index} className="mr-5 capitalize">
+                      <div className="font-sans bg-gray-200  h-6 w-20 animate-pulse capitalize"></div>
                     </li>
                   ))
                 : menuItems.map((menuItem) => {
@@ -157,9 +157,9 @@ export default function Home() {
           )}
         </div>
       </div>
-      <section className="bg-[url('../../public/images/back-30.jpg')] border-none bg-no-repeat bg-center">
+      <section className="bg-[url('../../public/images/back-30.jpg')] lg:bg-contain md:bg-contain  sm:bg-cover border-none bg-no-repeat bg-center">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-          <h1 className=" text-4xl capitalize font-bold mb-4  tracking-tight leading-none text-white">
+          <h1 className=" lg:text-[80px] md:text-[60px] text-[50px] capitalize font-bold mb-4  tracking-tight leading-none text-white">
             15 MINUTES
           </h1>
           <p className="mb-8 text-xl font-bold text-white lg:text-xl sm:px-16 lg:px-48">
