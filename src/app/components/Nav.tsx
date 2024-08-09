@@ -5,16 +5,23 @@ import Image from "next/image";
 import { CiUser, CiShoppingCart } from "react-icons/ci";
 import { MdFavorite } from "react-icons/md";
 import { useCart } from "@/app/context/CartContext";
+import { useFavorites } from "@/app/context/FavoriteContext";
 
 import logoImg from "../../../public/images/pepzilogo.png";
 import CartModal from "@/app/components/CartModal";
+import FavoriteModal from "@/app/components/FavoriteModal";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [favoriteModalOpen, setFavoriteModalOpen] = useState(false);
   const { cart } = useCart();
-
+  const { state: favoritesState } = useFavorites();
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
+
+  const toggleFavoriteModal = () => {
+    setFavoriteModalOpen(!favoriteModalOpen);
+  };
 
   const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
@@ -31,7 +38,7 @@ const Nav = () => {
             />
           </div>
           {/* Navigation Links */}
-          <div className="hidden md:flex md:flex-grow md:items-center md:justify-center">
+          {/* <div className="hidden md:flex md:flex-grow md:items-center md:justify-center">
             <ul className="flex space-x-8">
               <li>
                 <a
@@ -75,15 +82,24 @@ const Nav = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
           {/* Icons */}
           <div className="flex items-center space-x-4">
             <a href="#" className="text-gray-900 hover:text-[#f2252a]">
               <CiUser size={24} />
             </a>
-            <button className="relative text-gray-900 hover:text-[#f2252a]">
+            <button
+              className="relative text-gray-900 hover:text-[#f2252a]"
+              onClick={toggleFavoriteModal}
+            >
               <MdFavorite size={24} />
+              {favoritesState.items.length > 0 && (
+                <span className="absolute top-[2px] right-3.5 bg-red-600 text-white text-xs rounded-full px-1">
+                  {favoritesState.items.length}
+                </span>
+              )}
             </button>
+
             <button
               onClick={openCart}
               className="relative text-gray-900 hover:text-[#f2252a]"
@@ -99,6 +115,7 @@ const Nav = () => {
         </nav>
       </div>
       {isCartOpen && <CartModal onClose={closeCart} />}
+      <FavoriteModal open={favoriteModalOpen} onClose={toggleFavoriteModal} />
     </div>
   );
 };
