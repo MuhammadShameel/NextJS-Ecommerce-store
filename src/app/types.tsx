@@ -81,7 +81,7 @@ export type MenuItemProps = {
 };
 
 export type CardProps = {
-  // product: Product;
+  id: string;
   href: string;
   title: string;
   slug: string;
