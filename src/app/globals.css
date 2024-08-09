@@ -128,3 +128,72 @@ h2 {
 .bg-image-zoom-food:hover::before {
   transform: scale(1.05);
 }
+
+.bg-image-zoom-healthy-pizza {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image-zoom-healthy-pizza::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/banner-12.jpg"); /* Adjust the path as necessary */
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.bg-image-zoom-healthy-pizza:hover::before {
+  transform: scale(1.05);
+}
+
+.bg-image-zoom-short-drink {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image-zoom-short-drink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/banner-13.jpg"); /* Adjust the path as necessary */
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.bg-image-zoom-short-drink:hover::before {
+  transform: scale(1.05);
+}
+
+.bg-image-zoom-single-product {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image-zoom-single-product::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/images/banner-14.jpg"); /* Adjust the path as necessary */
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.bg-image-zoom-single-product:hover::before {
+  transform: scale(1.05);
+}
