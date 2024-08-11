@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
+import Image from "next/image";
 
 export interface FavoriteItem {
   id: string;
